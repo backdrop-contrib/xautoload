@@ -1,0 +1,11 @@
+[XAutoloadUnitTestCase]
+name = X Autoload unit test
+description = Test the xautoload class finder.
+group = X Autoload
+file = XAutoloadUnitTestCase.test
+
+[XAutoloadWebTestCase]
+name = X Autoload web test
+description = Test xautoload class loading for an example module.
+group = X Autoload
+file = XAutoloadWebTestCase.test
