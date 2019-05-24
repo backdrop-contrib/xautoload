@@ -14,14 +14,14 @@ class DrupalSystem implements DrupalSystemInterface {
    * {@inheritdoc}
    */
   function variableSet($name, $value) {
-    variable_set($name, $value);
+    config_set('xautoload.settings', $name, $value);
   }
 
   /**
    * {@inheritdoc}
    */
   function variableGet($name, $default = NULL) {
-    return variable_get($name, $default);
+    return config_get('xautoload.settings', $name);
   }
 
   /**

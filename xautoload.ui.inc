@@ -14,7 +14,7 @@ function xautoload_form_system_performance_settings_alter(&$form) {
     '#title' => t('X Autoload'),
   );
 
-  $cache_default_value = variable_get(XAUTOLOAD_VARNAME_CACHE_TYPES, array());
+  $cache_default_value = config_get('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_TYPES);
 
   $cache_status = array(
     'apcu_q' => $apcu_status = (extension_loaded('apcu') && function_exists('apcu_store')),
@@ -74,14 +74,14 @@ function xautoload_form_system_performance_settings_alter(&$form) {
   $form['xautoload'][XAUTOLOAD_VARNAME_CACHE_LAZY] = array(
     '#type' => 'checkbox',
     '#title' => t('Postpone registration of module namespaces until the first cache miss (recommended).'),
-    '#default_value' => variable_get(XAUTOLOAD_VARNAME_CACHE_LAZY, FALSE),
+    '#default_value' => config_get('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_LAZY),
     '#description' => t('This should speed up the bootstrap of xautoload.'),
   );
 
   $form['xautoload'][XAUTOLOAD_VARNAME_REPLACE_CORE] = array(
     '#type' => 'checkbox',
     '#title' => t('Replace core class loader.'),
-    '#default_value' => variable_get(XAUTOLOAD_VARNAME_REPLACE_CORE, FALSE),
+    '#default_value' => config_get('xautoload.settings', XAUTOLOAD_VARNAME_REPLACE_CORE),
     '#description' => t('Lets xautoload replace Drupal\'s drupal_autoload_class() and drupal_autoload_interface().')
       . '<br/>' . t('Improves performance, if at least one of the cache options is active and enabled.')
       . '<br/>' . t('This features is quite new. Please report any problems in the xautoload issue queue on drupal.org.'),

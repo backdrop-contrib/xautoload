@@ -45,9 +45,9 @@ class EnvironmentSnapshotMaker {
       $observations['class_exists'][$class] = class_exists($class);
     }
 
-    // Check variable_get().
-    $observations[XAUTOLOAD_VARNAME_CACHE_TYPES] = variable_get(XAUTOLOAD_VARNAME_CACHE_TYPES);
-    $observations[XAUTOLOAD_VARNAME_CACHE_LAZY] = variable_get(XAUTOLOAD_VARNAME_CACHE_LAZY);
+    // Check config_get().
+    $observations[XAUTOLOAD_VARNAME_CACHE_TYPES] = config_get('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_TYPES);
+    $observations[XAUTOLOAD_VARNAME_CACHE_LAZY] = config_get('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_LAZY);
 
     $observations['db_connection_info'] = \Database::getConnectionInfo();
 

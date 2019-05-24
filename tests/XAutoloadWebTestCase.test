@@ -39,10 +39,10 @@ class XAutoloadWebTestCase extends \DrupalWebTestCase {
    */
   protected function xautoloadTestWithCacheTypes($cache_types, $cache_lazy) {
 
-    variable_set(XAUTOLOAD_VARNAME_CACHE_TYPES, $cache_types);
+    config_set('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_TYPES, $cache_types);
     $this->pass("Set cache types: " . var_export($cache_types, TRUE));
 
-    variable_set(XAUTOLOAD_VARNAME_CACHE_LAZY, $cache_lazy);
+    config_set('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_LAZY, $cache_lazy);
     $this->pass("Set cache lazy mode: " . var_export($cache_lazy, TRUE));
 
     // Enable xautoload.
