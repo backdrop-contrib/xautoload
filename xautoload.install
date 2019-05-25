@@ -5,7 +5,7 @@
 require_once __DIR__ . '/xautoload.module';
 
 /**
- * Implements hook_install()
+ * Implements hook_install().
  */
 function xautoload_install() {
   // Set module weight for xautoload to run before other modules.
@@ -14,14 +14,16 @@ function xautoload_install() {
 }
 
 /**
- * Implements hook_uninstall()
+ * Implements hook_uninstall().
  */
 function xautoload_uninstall() {
-  variable_del(XAUTOLOAD_VARNAME_CACHE_TYPES);
-  variable_del(XAUTOLOAD_VARNAME_CACHE_LAZY);
-  variable_del(XAUTOLOAD_VARNAME_REPLACE_CORE);
-  variable_del(XAUTOLOAD_VARNAME_CACHE_PREFIX);
+  $config = config('xautoload.settings');
+  $config->clear(XAUTOLOAD_VARNAME_CACHE_TYPES);
+  $config->clear(XAUTOLOAD_VARNAME_CACHE_LAZY);
+  $config->clear(XAUTOLOAD_VARNAME_REPLACE_CORE);
+  $config->clear(XAUTOLOAD_VARNAME_CACHE_PREFIX);
 
   // The following variable is a leftover from previous versions.
-  variable_del('xautoload_cache_mode');
+  $config->clear('xautoload_cache_mode');
+  $config->save();
 }
