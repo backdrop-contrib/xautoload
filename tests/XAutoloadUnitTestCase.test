@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\Tests;
+//namespace Drupal\xautoload\Tests;
 
 use Drupal\xautoload\ClassFinder\ClassFinder;
 use Drupal\xautoload\ClassFinder\InjectedApi\CollectFilesInjectedApi;
@@ -14,7 +14,7 @@ class XAutoloadUnitTestCase extends \DrupalUnitTestCase {
     // drupal_load('module', 'xautoload') would register namespaces for all
     // enabled modules, which is not intended for this unit test.
     // Instead, we just include xautoload.early.inc.
-    require_once __DIR__ . '/../../../../xautoload.early.inc';
+    require_once __DIR__ . '/../xautoload.early.inc';
 
     // Make sure we use the regular loader, not the APC one.
     // Also make sure to prepend this one. Otherwise, the core class loader will
@@ -38,11 +38,9 @@ class XAutoloadUnitTestCase extends \DrupalUnitTestCase {
     $expected = array(
       'Drupal\\xautoload\\ClassFinder\\ClassFinder->loadClass()',
       /* @see _drupal_bootstrap_database() */
-      'drupal_autoload_class',
-      'drupal_autoload_interface',
-      'drupal_autoload_trait',
+      'backdrop_autoload',
       /* @see simpletest_classloader_register() */
-      '_simpletest_autoload_psr4_psr0',
+      //'_simpletest_autoload_psr4_psr0',
     );
 
     $actual = array();
