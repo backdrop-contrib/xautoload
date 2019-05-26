@@ -124,7 +124,7 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
    */
   function findFile($api, $logical_base_path, $relative_path, $extension_name = NULL) {
 
-    $extension_file = $this->system->drupalGetFilename($this->type, $extension_name);
+    $extension_file = $this->system->backdropGetFilename($this->type, $extension_name);
     if (empty($extension_file)) {
       // Extension does not exist, or is not installed.
       return FALSE;

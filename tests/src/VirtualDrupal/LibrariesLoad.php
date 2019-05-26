@@ -9,7 +9,7 @@ class LibrariesLoad {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
    * @var Cache
@@ -22,12 +22,12 @@ class LibrariesLoad {
   private $librariesInfo;
 
   /**
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    * @param Cache $cache
    * @param LibrariesInfo $librariesInfo
    */
-  function __construct(DrupalStatic $drupalStatic, Cache $cache, LibrariesInfo $librariesInfo) {
-    $this->drupalStatic = $drupalStatic;
+  function __construct(DrupalStatic $backdropStatic, Cache $cache, LibrariesInfo $librariesInfo) {
+    $this->backdropStatic = $backdropStatic;
     $this->cache = $cache;
     $this->librariesInfo = $librariesInfo;
   }
@@ -38,7 +38,7 @@ class LibrariesLoad {
    * @see libraries_load()
    */
   function librariesLoad($name) {
-    $loaded = &$this->drupalStatic->get('libraries_load', array());
+    $loaded = &$this->backdropStatic->get('libraries_load', array());
 
     if (!isset($loaded[$name])) {
       $library = $this->cache->cacheGet($name, 'cache_libraries');

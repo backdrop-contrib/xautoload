@@ -20,7 +20,7 @@ class DrupalBootstrap {
   /**
    * @var DrupalLoad
    */
-  private $drupalLoad;
+  private $backdropLoad;
 
   /**
    * Replicates the static $has_run in module_load_all()
@@ -30,43 +30,43 @@ class DrupalBootstrap {
   private $moduleLoadAllHasRun = FALSE;
 
   /**
-   * @param DrupalLoad $drupalLoad
+   * @param DrupalLoad $backdropLoad
    * @param HookSystem $hookSystem
    * @param ModuleList $moduleList
    */
-  function __construct(DrupalLoad $drupalLoad, HookSystem $hookSystem, ModuleList $moduleList) {
-    $this->drupalLoad = $drupalLoad;
+  function __construct(DrupalLoad $backdropLoad, HookSystem $hookSystem, ModuleList $moduleList) {
+    $this->backdropLoad = $backdropLoad;
     $this->hookSystem = $hookSystem;
     $this->moduleList = $moduleList;
   }
 
   /**
-   * @see drupal_bootstrap()
+   * @see backdrop_bootstrap()
    */
   function boot() {
-    $this->drupalBootstrapVariables();
-    $this->drupalBootstrapPageHeader();
-    $this->drupalBootstrapFull();
+    $this->backdropBootstrapVariables();
+    $this->backdropBootstrapPageHeader();
+    $this->backdropBootstrapFull();
   }
 
   /**
-   * @see _drupal_bootstrap_variables()
+   * @see _backdrop_bootstrap_variables()
    */
-  private function drupalBootstrapVariables() {
+  private function backdropBootstrapVariables() {
     $this->moduleLoadAll(TRUE);
   }
 
   /**
-   * @see _drupal_bootstrap_page_header()
+   * @see _backdrop_bootstrap_page_header()
    */
-  private function drupalBootstrapPageHeader() {
+  private function backdropBootstrapPageHeader() {
     $this->bootstrapInvokeAll('boot');
   }
 
   /**
-   * @see _drupal_bootstrap_full()
+   * @see _backdrop_bootstrap_full()
    */
-  private function drupalBootstrapFull() {
+  private function backdropBootstrapFull() {
     $this->moduleLoadAll();
     $this->menuSetCustomTheme();
     $this->hookSystem->moduleInvokeAll('init');
@@ -91,7 +91,7 @@ class DrupalBootstrap {
   private function moduleLoadAll($bootstrap = FALSE) {
     if (isset($bootstrap)) {
       foreach ($this->moduleList->moduleList(TRUE, $bootstrap) as $module) {
-        $this->drupalLoad->drupalLoad('module', $module);
+        $this->backdropLoad->backdropLoad('module', $module);
       }
       // $has_run will be TRUE if $bootstrap is FALSE.
       $this->moduleLoadAllHasRun = !$bootstrap;
@@ -113,7 +113,7 @@ class DrupalBootstrap {
     // make sure that its internal cache is primed with the bootstrap modules
     // only.
     foreach ($this->moduleList->moduleList(FALSE, TRUE) as $module) {
-      $this->drupalLoad->drupalLoad('module', $module);
+      $this->backdropLoad->backdropLoad('module', $module);
       PureFunctions::moduleInvoke($module, $hook);
     }
   }

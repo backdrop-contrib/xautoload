@@ -12,7 +12,7 @@ class ModuleList {
   /**
    * @var DrupalGetFilename
    */
-  private $drupalGetFilename;
+  private $backdropGetFilename;
 
   /**
    * @var SystemList
@@ -32,17 +32,17 @@ class ModuleList {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
-   * @param DrupalGetFilename $drupalGetFilename
+   * @param DrupalGetFilename $backdropGetFilename
    * @param SystemList $systemList
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    */
-  function __construct(DrupalGetFilename $drupalGetFilename, SystemList $systemList, DrupalStatic $drupalStatic) {
-    $this->drupalGetFilename = $drupalGetFilename;
+  function __construct(DrupalGetFilename $backdropGetFilename, SystemList $systemList, DrupalStatic $backdropStatic) {
+    $this->backdropGetFilename = $backdropGetFilename;
     $this->systemList = $systemList;
-    $this->drupalStatic = $drupalStatic;
+    $this->backdropStatic = $backdropStatic;
   }
 
   /**
@@ -56,7 +56,7 @@ class ModuleList {
   function setModuleList($fixed_list, $sort = FALSE) {
 
     foreach ($fixed_list as $name => $module) {
-      $this->drupalGetFilename->drupalSetFilename('module', $name, $module['filename']);
+      $this->backdropGetFilename->backdropSetFilename('module', $name, $module['filename']);
       $this->list[$name] = $name;
     }
 
@@ -86,13 +86,13 @@ class ModuleList {
       if ($refresh) {
         // For the $refresh case, make sure that system_list() returns fresh
         // data.
-        $this->drupalStatic->resetKey('system_list');
+        $this->backdropStatic->resetKey('system_list');
       }
       if ($bootstrap_refresh) {
         $this->list = $this->systemList->systemListBootstrap();
       }
       else {
-        // Not using drupal_map_assoc() here as that requires common.inc.
+        // Not using backdrop_map_assoc() here as that requires common.inc.
         $this->list = array_keys($this->systemList->systemListModuleEnabled());
         $this->list = !empty($this->list)
           ? array_combine($this->list, $this->list)

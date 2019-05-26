@@ -24,7 +24,7 @@ class ModuleImplements {
   /**
    * @var array[]
    */
-  private $drupalStaticFast;
+  private $backdropStaticFast;
 
   /**
    * Replacement for $implementations['#write_cache'].
@@ -36,16 +36,16 @@ class ModuleImplements {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    * @param Cache $cache
    * @param ModuleList $moduleList
    * @param HookSystem $hookSystem
    */
-  function __construct(DrupalStatic $drupalStatic, Cache $cache, ModuleList $moduleList, HookSystem $hookSystem) {
-    $this->drupalStatic = $drupalStatic;
+  function __construct(DrupalStatic $backdropStatic, Cache $cache, ModuleList $moduleList, HookSystem $hookSystem) {
+    $this->backdropStatic = $backdropStatic;
     $this->cache = $cache;
     $this->moduleList = $moduleList;
     $this->hookSystem = $hookSystem;
@@ -60,16 +60,16 @@ class ModuleImplements {
    */
   function reset() {
 
-    // Use the advanced drupal_static() pattern, since this is called very often.
-    if (!isset($this->drupalStaticFast)) {
-      $this->drupalStaticFast['implementations'] = &$this->drupalStatic->get('module_implements');
+    // Use the advanced backdrop_static() pattern, since this is called very often.
+    if (!isset($this->backdropStaticFast)) {
+      $this->backdropStaticFast['implementations'] = &$this->backdropStatic->get('module_implements');
     }
-    $implementations = &$this->drupalStaticFast['implementations'];
+    $implementations = &$this->backdropStaticFast['implementations'];
 
     $implementations = array();
     $this->cache->cacheSet('module_implements', array(), 'cache_bootstrap');
-    $this->drupalStatic->resetKey('module_hook_info');
-    $this->drupalStatic->resetKey('drupal_alter');
+    $this->backdropStatic->resetKey('module_hook_info');
+    $this->backdropStatic->resetKey('backdrop_alter');
     $this->cache->cacheClearAll('hook_info', 'cache_bootstrap');
     return NULL;
   }
@@ -84,11 +84,11 @@ class ModuleImplements {
    */
   function moduleImplements($hook, $sort = FALSE) {
 
-    // Use the advanced drupal_static() pattern, since this is called very often.
-    if (!isset($this->drupalStaticFast)) {
-      $this->drupalStaticFast['implementations'] = &$this->drupalStatic->get('module_implements');
+    // Use the advanced backdrop_static() pattern, since this is called very often.
+    if (!isset($this->backdropStaticFast)) {
+      $this->backdropStaticFast['implementations'] = &$this->backdropStatic->get('module_implements');
     }
-    $implementations = &$this->drupalStaticFast['implementations'];
+    $implementations = &$this->backdropStaticFast['implementations'];
 
     // Fetch implementations from cache.
     if (empty($implementations)) {
@@ -148,7 +148,7 @@ class ModuleImplements {
     // Allow modules to change the weight of specific implementations but avoid
     // an infinite loop.
     if ($hook != 'module_implements_alter') {
-      $this->hookSystem->drupalAlter('module_implements', $implementations, $hook);
+      $this->hookSystem->backdropAlter('module_implements', $implementations, $hook);
     }
 
     return $implementations;

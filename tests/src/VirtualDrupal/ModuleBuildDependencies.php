@@ -18,12 +18,12 @@ class ModuleBuildDependencies {
       $graph[$file->name]['edges'] = array();
       if (isset($file->info['dependencies']) && is_array($file->info['dependencies'])) {
         foreach ($file->info['dependencies'] as $dependency) {
-          $dependency_data = $this->drupalParseDependency($dependency);
+          $dependency_data = $this->backdropParseDependency($dependency);
           $graph[$file->name]['edges'][$dependency_data['name']] = $dependency_data;
         }
       }
     }
-    $this->drupalDepthFirstSearch($graph);
+    $this->backdropDepthFirstSearch($graph);
     foreach ($graph as $module => $data) {
       $files[$module]->required_by = isset($data['reverse_paths'])
         ? $data['reverse_paths']
@@ -37,11 +37,11 @@ class ModuleBuildDependencies {
   }
 
   /**
-   * @see drupal_depth_first_search()
+   * @see backdrop_depth_first_search()
    *
    * @param $graph
    */
-  private function drupalDepthFirstSearch(&$graph) {
+  private function backdropDepthFirstSearch(&$graph) {
     $state = array(
       // The order of last visit of the depth first search. This is the reverse
       // of the topological order if the graph is acyclic.
@@ -51,7 +51,7 @@ class ModuleBuildDependencies {
     );
     // Perform the actual search.
     foreach ($graph as $start => $data) {
-      $this->drupalDepthFirstSearchRec($graph, $state, $start);
+      $this->backdropDepthFirstSearchRec($graph, $state, $start);
     }
 
     // We do such a numbering that every component starts with 0. This is useful
@@ -71,7 +71,7 @@ class ModuleBuildDependencies {
   /**
    * Performs a depth-first search on a graph.
    *
-   * @see _drupal_depth_first_search()
+   * @see _backdrop_depth_first_search()
    *
    * @param array $graph
    *   A three dimensional associated graph array.
@@ -84,7 +84,7 @@ class ModuleBuildDependencies {
    * @param $component
    *   The component of the last vertex.
    */
-  function drupalDepthFirstSearchRec(&$graph, &$state, $start, &$component = NULL) {
+  function backdropDepthFirstSearchRec(&$graph, &$state, $start, &$component = NULL) {
     // Assign new component for each new vertex, i.e. when not called recursively.
     if (!isset($component)) {
       $component = $start;
@@ -120,7 +120,7 @@ class ModuleBuildDependencies {
         // Only visit existing vertices.
         if (isset($graph[$end])) {
           // Visit the connected vertex.
-          $this->drupalDepthFirstSearchRec($graph, $state, $end, $component);
+          $this->backdropDepthFirstSearchRec($graph, $state, $end, $component);
 
           // All vertices reachable by $end are also reachable by $start.
           $graph[$start]['paths'] += $graph[$end]['paths'];
@@ -142,13 +142,13 @@ class ModuleBuildDependencies {
   }
 
   /**
-   * @see drupal_parse_dependency()
+   * @see backdrop_parse_dependency()
    *
    * @param $dependency
    *
    * @return array
    */
-  private function drupalParseDependency($dependency) {
+  private function backdropParseDependency($dependency) {
     // We use named subpatterns and support every op that version_compare
     // supports. Also, op is optional and defaults to equals.
     $p_op = '(?P<operation>!=|==|=|<|<=|>|>=|<>)?';

@@ -13,12 +13,12 @@ class HookSystem {
   private $moduleImplements;
 
   /**
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    * @param Cache $cache
    * @param ModuleList $moduleList
    */
-  function __construct(DrupalStatic $drupalStatic, Cache $cache, ModuleList $moduleList) {
-    $this->moduleImplements = new ModuleImplements($drupalStatic, $cache, $moduleList, $this);
+  function __construct(DrupalStatic $backdropStatic, Cache $cache, ModuleList $moduleList) {
+    $this->moduleImplements = new ModuleImplements($backdropStatic, $cache, $moduleList, $this);
   }
 
   /**
@@ -39,7 +39,7 @@ class HookSystem {
    * @param string $hook
    * @param mixed $data
    */
-  function drupalAlter($hook, &$data) {
+  function backdropAlter($hook, &$data) {
     $args = func_get_args();
     assert($hook === array_shift($args));
     assert($data === array_shift($args));

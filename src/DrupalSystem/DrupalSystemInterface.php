@@ -25,29 +25,29 @@ interface DrupalSystemInterface {
   function variableGet($name, $default = NULL);
 
   /**
-   * Replacement of drupal_get_filename(), but returning an absolute file path.
+   * Replacement of backdrop_get_filename(), but returning an absolute file path.
    *
    * @param string $type
    * @param string $name
    *
    * @return string
-   *   The result of drupal_get_filename() with DRUPAL_ROOT . '/' prepended.
+   *   The result of backdrop_get_filename() with BACKDROP_ROOT . '/' prepended.
    *
-   * @see drupal_get_filename()
+   * @see backdrop_get_filename()
    */
-  function drupalGetFilename($type, $name);
+  function backdropGetFilename($type, $name);
 
   /**
-   * Replacement of drupal_get_path(), but returning an absolute directory path.
+   * Replacement of backdrop_get_path(), but returning an absolute directory path.
    *
    * @param string $type
    * @param string $name
    *
    * @return string
    *
-   * @see drupal_get_path()
+   * @see backdrop_get_path()
    */
-  function drupalGetPath($type, $name);
+  function backdropGetPath($type, $name);
 
   /**
    * @param string[] $extension_names
@@ -140,6 +140,6 @@ interface DrupalSystemInterface {
   /**
    * @param string $key
    */
-  public function drupalStaticReset($key);
+  public function backdropStaticReset($key);
 
 }

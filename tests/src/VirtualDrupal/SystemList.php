@@ -15,7 +15,7 @@ class SystemList {
   /**
    * @var DrupalGetFilename
    */
-  private $drupalGetFilename;
+  private $backdropGetFilename;
 
   /**
    * @var SystemListLoader
@@ -25,19 +25,19 @@ class SystemList {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
    * @param Cache $cache
    * @param SystemTable $systemTable
-   * @param DrupalGetFilename $drupalGetFilename
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalGetFilename $backdropGetFilename
+   * @param DrupalStatic $backdropStatic
    */
-  function __construct(Cache $cache, SystemTable $systemTable, DrupalGetFilename $drupalGetFilename, DrupalStatic $drupalStatic) {
+  function __construct(Cache $cache, SystemTable $systemTable, DrupalGetFilename $backdropGetFilename, DrupalStatic $backdropStatic) {
     $this->cache = $cache;
-    $this->drupalGetFilename = $drupalGetFilename;
+    $this->backdropGetFilename = $backdropGetFilename;
     $this->systemListLoader = new SystemListLoader($systemTable);
-    $this->drupalStatic = $drupalStatic;
+    $this->backdropStatic = $backdropStatic;
   }
 
   /**
@@ -60,7 +60,7 @@ class SystemList {
    * @return object[]|array[]
    */
   private function systemList($type) {
-    $lists = &$this->drupalStatic->get('system_list');
+    $lists = &$this->backdropStatic->get('system_list');
 
     if (isset($lists['module_enabled'])) {
       return $lists[$type];
@@ -75,9 +75,9 @@ class SystemList {
       $this->cache->cacheSet('system_list', $lists, 'cache_bootstrap');
     }
     // To avoid a separate database lookup for the filepath, prime the
-    // drupal_get_filename() static cache with all enabled modules and themes.
+    // backdrop_get_filename() static cache with all enabled modules and themes.
     foreach ($lists['filepaths'] as $item) {
-      $this->drupalGetFilename->drupalSetFilename($item['type'], $item['name'], $item['filepath']);
+      $this->backdropGetFilename->backdropSetFilename($item['type'], $item['name'], $item['filepath']);
     }
 
     return $lists[$type];
@@ -91,7 +91,7 @@ class SystemList {
    * @return array|null
    */
   function systemListBootstrap() {
-    $lists = &$this->drupalStatic->get('system_list');
+    $lists = &$this->backdropStatic->get('system_list');
 
     // For bootstrap modules, attempt to fetch the list from cache if possible.
     // if not fetch only the required information to fire bootstrap hooks
@@ -109,10 +109,10 @@ class SystemList {
     }
 
     // To avoid a separate database lookup for the filepath, prime the
-    // drupal_get_filename() static cache for bootstrap modules only.
+    // backdrop_get_filename() static cache for bootstrap modules only.
     // The rest is stored separately to keep the bootstrap module cache small.
     foreach ($bootstrap_list as $module) {
-      $this->drupalGetFilename->drupalSetFilename('module', $module->name, $module->filename);
+      $this->backdropGetFilename->backdropSetFilename('module', $module->name, $module->filename);
     }
 
     // We only return the module names here since module_list() doesn't need

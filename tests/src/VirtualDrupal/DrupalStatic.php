@@ -17,9 +17,9 @@ class DrupalStatic {
   private $default = array();
 
   /**
-   * Replicates drupal_static($name, $default_value, FALSE).
+   * Replicates backdrop_static($name, $default_value, FALSE).
    *
-   * @see drupal_static()
+   * @see backdrop_static()
    *
    * @param string $name
    * @param mixed|null $default_value
@@ -42,9 +42,9 @@ class DrupalStatic {
   }
 
   /**
-   * Replicates drupal_static($name, NULL, TRUE).
+   * Replicates backdrop_static($name, NULL, TRUE).
    *
-   * @see drupal_static()
+   * @see backdrop_static()
    *
    * @param string $name
    *
@@ -68,15 +68,15 @@ class DrupalStatic {
   }
 
   /**
-   * Replicates drupal_static(NULL, NULL, TRUE).
+   * Replicates backdrop_static(NULL, NULL, TRUE).
    *
-   * @see drupal_static()
+   * @see backdrop_static()
    *
    * @return array
    */
   public function &resetAll() {
     // Reset all: ($name == NULL). This needs to be done one at a time so that
-    // references returned by earlier invocations of drupal_static() also get
+    // references returned by earlier invocations of backdrop_static() also get
     // reset.
     foreach ($this->default as $name => $value) {
       $this->data[$name] = $value;

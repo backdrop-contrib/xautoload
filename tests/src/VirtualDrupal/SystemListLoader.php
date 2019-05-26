@@ -67,7 +67,7 @@ class SystemListLoader {
       else {
         continue;
       }
-      // Build a list of filenames so drupal_get_filename can use it.
+      // Build a list of filenames so backdrop_get_filename can use it.
       if ($record->status) {
         $lists['filepaths'][] = array(
           'type' => $record->type,
@@ -89,7 +89,7 @@ class SystemListLoader {
     foreach ($themes as $key => $theme) {
       if (!empty($theme->info['base theme'])) {
         // Make a list of the theme's base themes.
-        $theme->base_themes = $this->drupalFindBaseThemes($themes, $key);
+        $theme->base_themes = $this->backdropFindBaseThemes($themes, $key);
         // Don't proceed if there was a problem with the root base theme.
         if (!current($theme->base_themes)) {
           continue;
@@ -120,7 +120,7 @@ class SystemListLoader {
   }
 
   /**
-   * Replicates drupal_find_base_themes()
+   * Replicates backdrop_find_base_themes()
    *
    * @param $themes
    * @param $key
@@ -128,7 +128,7 @@ class SystemListLoader {
    *
    * @return array
    */
-  private function drupalFindBaseThemes($themes, $key, $used_keys = array()) {
+  private function backdropFindBaseThemes($themes, $key, $used_keys = array()) {
     $base_key = $themes[$key]->info['base theme'];
     // Does the base theme exist?
     if (!isset($themes[$base_key])) {
@@ -148,7 +148,7 @@ class SystemListLoader {
         return array($base_key => NULL);
       }
       $used_keys[$base_key] = TRUE;
-      return $this->drupalFindBaseThemes($themes, $base_key, $used_keys) + $current_base_theme;
+      return $this->backdropFindBaseThemes($themes, $base_key, $used_keys) + $current_base_theme;
     }
     // If we get here, then this is our parent theme.
     return $current_base_theme;

@@ -38,6 +38,6 @@ function xautoload_test_1_menu() {
  */
 function _xautoload_test_1_json() {
   $all = EnvironmentSnapshotMaker::getSnapshots('xautoload_test_1');
-  drupal_json_output($all);
+  backdrop_json_output($all);
   exit();
 }

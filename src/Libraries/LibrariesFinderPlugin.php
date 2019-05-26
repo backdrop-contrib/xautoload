@@ -102,7 +102,7 @@ class LibrariesFinderPlugin implements FinderPluginInterface {
    * @return array[]
    */
   private function buildLibrariesXautoloadInfo() {
-    // @todo Reset drupal_static('libraries') ?
+    // @todo Reset backdrop_static('libraries') ?
     $all = array();
     foreach ($this->system->getLibrariesInfo() as $name => $info) {
       if (!isset($info['xautoload'])) {

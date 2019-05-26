@@ -5,7 +5,7 @@ namespace Drupal\xautoload\DrupalSystem;
 class DrupalSystem implements DrupalSystemInterface {
 
   function __construct() {
-    if (!function_exists('drupal_get_filename')) {
+    if (!function_exists('backdrop_get_filename')) {
       throw new \Exception("This class works only within a working Drupal environment.");
     }
   }
@@ -27,15 +27,15 @@ class DrupalSystem implements DrupalSystemInterface {
   /**
    * {@inheritdoc}
    */
-  function drupalGetFilename($type, $name) {
-    return DRUPAL_ROOT . '/' . drupal_get_filename($type, $name);
+  function backdropGetFilename($type, $name) {
+    return BACKDROP_ROOT . '/' . backdrop_get_filename($type, $name);
   }
 
   /**
    * {@inheritdoc}
    */
-  function drupalGetPath($type, $name) {
-    return DRUPAL_ROOT . '/' . drupal_get_path($type, $name);
+  function backdropGetPath($type, $name) {
+    return BACKDROP_ROOT . '/' . backdrop_get_path($type, $name);
   }
 
   /**
@@ -99,7 +99,7 @@ class DrupalSystem implements DrupalSystemInterface {
       // Libraries is at a lower version, which does not have this function.
       return array();
     }
-    # drupal_static_reset('libraries_info');
+    # backdrop_static_reset('libraries_info');
     return libraries_info();
   }
 
@@ -172,7 +172,7 @@ class DrupalSystem implements DrupalSystemInterface {
   /**
    * @param string $key
    */
-  public function drupalStaticReset($key) {
-    \drupal_static_reset($key);
+  public function backdropStaticReset($key) {
+    \backdrop_static_reset($key);
   }
 }

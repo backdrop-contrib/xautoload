@@ -74,7 +74,7 @@ class LibrariesOnInit implements PhaseObserverInterface {
    *   New module names.
    */
   public function modulesEnabled($modules) {
-    $this->system->drupalStaticReset('libraries_info');
+    $this->system->backdropStaticReset('libraries_info');
     $this->system->cacheClearAll(XAUTOLOAD_CACHENAME_LIBRARIES_INFO, 'cache');
     $this->registerLibrariesFinderPlugin();
   }

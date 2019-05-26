@@ -102,7 +102,7 @@ class HookXautoload implements PhaseObserverInterface {
     // Let other modules register stuff to the finder via hook_xautoload().
     $adapter = \xautoload_InjectedAPI_hookXautoload::create($this->finder, '');
     foreach ($modules as $module) {
-      $adapter->setExtensionDir($dir = $this->system->drupalGetPath('module', $module));
+      $adapter->setExtensionDir($dir = $this->system->backdropGetPath('module', $module));
       $function = $module . '_xautoload';
       $function($adapter, $dir);
     }

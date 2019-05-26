@@ -12,13 +12,13 @@ use Drupal\xautoload\Tests\VirtualDrupal\PureFunctions;
 abstract class AbstractExampleModules implements ExampleModulesInterface {
 
   /**
-   * Replicates drupal_system_listing('/^' . DRUPAL_PHP_FUNCTION_PATTERN . '\.module$/', 'modules', 'name', 0)
+   * Replicates backdrop_system_listing('/^' . BACKDROP_PHP_FUNCTION_PATTERN . '\.module$/', 'modules', 'name', 0)
    *
-   * @see drupal_system_listing()
+   * @see backdrop_system_listing()
    *
    * @return object[]
    */
-  public function drupalSystemListingModules() {
+  public function backdropSystemListingModules() {
     $modules = array();
     foreach ($this->getAvailableExtensions() as $name => $type) {
       if ('module' !== $type) {

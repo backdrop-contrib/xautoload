@@ -14,25 +14,25 @@ class DrupalLoad {
   /**
    * @var DrupalGetFilename
    */
-  private $drupalGetFilename;
+  private $backdropGetFilename;
 
   /**
-   * @param DrupalGetFilename $drupalGetFilename
+   * @param DrupalGetFilename $backdropGetFilename
    */
-  function __construct(DrupalGetFilename $drupalGetFilename) {
-    $this->drupalGetFilename = $drupalGetFilename;
+  function __construct(DrupalGetFilename $backdropGetFilename) {
+    $this->backdropGetFilename = $backdropGetFilename;
   }
 
   /**
-   * @see drupal_load()
+   * @see backdrop_load()
    */
-  function drupalLoad($type, $name) {
+  function backdropLoad($type, $name) {
 
     if (isset($this->files[$type][$name])) {
       return TRUE;
     }
 
-    $filename = $this->drupalGetFilename->drupalGetFilename($type, $name);
+    $filename = $this->backdropGetFilename->backdropGetFilename($type, $name);
 
     if ($filename) {
       include_once $filename;

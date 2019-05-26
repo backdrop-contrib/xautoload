@@ -9,7 +9,7 @@ class SystemListReset {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
    * @var Cache
@@ -18,20 +18,20 @@ class SystemListReset {
 
   /**
    * @param Cache $cache
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    */
-  function __construct(Cache $cache, DrupalStatic $drupalStatic) {
+  function __construct(Cache $cache, DrupalStatic $backdropStatic) {
     $this->cache = $cache;
-    $this->drupalStatic = $drupalStatic;
+    $this->backdropStatic = $backdropStatic;
   }
 
   /**
    * @see system_list_reset()
    */
   function systemListReset() {
-    $this->drupalStatic->resetKey('system_list');
-    $this->drupalStatic->resetKey('system_rebuild_module_data');
-    $this->drupalStatic->resetKey('list_themes');
+    $this->backdropStatic->resetKey('system_list');
+    $this->backdropStatic->resetKey('system_rebuild_module_data');
+    $this->backdropStatic->resetKey('list_themes');
     $this->cache->cacheClearAll('bootstrap_modules', 'cache_bootstrap');
     $this->cache->cacheClearAll('system_list', 'cache_bootstrap');
 

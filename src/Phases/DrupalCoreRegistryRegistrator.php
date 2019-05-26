@@ -16,7 +16,7 @@ class DrupalCoreRegistryRegistrator implements PhaseObserverInterface {
    *   Currently enabled extensions. Extension type by extension name.
    */
   public function wakeUp(ExtendedClassFinderInterface $finder, array $extensions) {
-    $plugin = new DrupalCoreRegistryPlugin(DRUPAL_ROOT . '/');
+    $plugin = new DrupalCoreRegistryPlugin(BACKDROP_ROOT . '/');
     $finder->getNamespaceMap()->registerDeepPath('', 'registry', $plugin);
     $finder->getPrefixMap()->registerDeepPath('', 'registry', $plugin);
   }

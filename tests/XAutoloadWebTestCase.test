@@ -85,7 +85,7 @@ class XAutoloadWebTestCase extends \DrupalWebTestCase {
 
     foreach ($all as $phase => $observations) {
       $when = ($phase === 'early')
-        ? 'on drupal_load() during module_enable()'
+        ? 'on backdrop_load() during module_enable()'
         : (($phase === 'later')
           ? 'after hook_modules_enabled()'
           : 'at an undefined time'
@@ -117,7 +117,7 @@ class XAutoloadWebTestCase extends \DrupalWebTestCase {
   protected function xautoloadModuleCheckJson($module, $cache_types, $cache_lazy, $classes) {
 
     $path = "$module.json";
-    $json = $this->drupalGet($path);
+    $json = $this->backdropGet($path);
     $all = json_decode($json, TRUE);
 
     if (!is_array($all) || empty($all)) {

@@ -159,7 +159,7 @@ class ExtensionNamespaces implements PhaseObserverInterface {
       // Already registered.
       return;
     }
-    $dir = $this->system->drupalGetPath($type, $name);
+    $dir = $this->system->backdropGetPath($type, $name);
     $this->_registerExtension($name, $dir);
   }
 

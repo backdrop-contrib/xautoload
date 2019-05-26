@@ -34,7 +34,7 @@ class SystemBuildModuleData {
    */
   public function systemBuildModuleData() {
     // Find modules
-    $modules = $this->exampleModules->drupalSystemListingModules();
+    $modules = $this->exampleModules->backdropSystemListingModules();
 
     if (FALSE) {
       // Include the installation profile in modules that are loaded.
@@ -57,7 +57,7 @@ class SystemBuildModuleData {
       'description' => '',
       'package' => 'Other',
       'version' => NULL,
-      # 'php' => DRUPAL_MINIMUM_PHP,
+      # 'php' => BACKDROP_MINIMUM_PHP,
       'files' => array(),
       'bootstrap' => 0,
     );
@@ -69,7 +69,7 @@ class SystemBuildModuleData {
       $modules[$key]->filename = $module->uri;
 
       // Look for the info file.
-      $module->info = $this->exampleModules->drupalParseInfoFile($module->name);
+      $module->info = $this->exampleModules->backdropParseInfoFile($module->name);
 
       // Skip modules that don't provide info.
       if (empty($module->info)) {
@@ -89,7 +89,7 @@ class SystemBuildModuleData {
       // Invoke hook_system_info_alter() to give installed modules a chance to
       // modify the data in the .info files if necessary.
       $type = 'module';
-      $this->hookSystem->drupalAlter('system_info', $modules[$key]->info, $modules[$key], $type);
+      $this->hookSystem->backdropAlter('system_info', $modules[$key]->info, $modules[$key], $type);
     }
 
     if (isset($modules[$profile])) {

@@ -16,9 +16,9 @@ interface ExampleModulesInterface {
   public function discoverModuleFilenames($type);
 
   /**
-   * Replicates drupal_system_listing('/^' . DRUPAL_PHP_FUNCTION_PATTERN . '\.module$/', 'modules', 'name', 0)
+   * Replicates backdrop_system_listing('/^' . BACKDROP_PHP_FUNCTION_PATTERN . '\.module$/', 'modules', 'name', 0)
    *
-   * @see drupal_system_listing()
+   * @see backdrop_system_listing()
    *
    * @return object[]
    *   E.g. array('devel' => (object)array(
@@ -27,19 +27,19 @@ interface ExampleModulesInterface {
    *     'name' => 'devel',
    *   ));
    */
-  public function drupalSystemListingModules();
+  public function backdropSystemListingModules();
 
   /**
-   * Replicates drupal_parse_info_file(dirname($module->uri) . '/' . $module->name . '.info')
+   * Replicates backdrop_parse_info_file(dirname($module->uri) . '/' . $module->name . '.info')
    *
-   * @see drupal_parse_info_file()
+   * @see backdrop_parse_info_file()
    *
    * @param string $name
    *
    * @return array
    *   Parsed info file contents.
    */
-  public function drupalParseInfoFile($name);
+  public function backdropParseInfoFile($name);
 
   /**
    * @return true[]

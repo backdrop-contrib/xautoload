@@ -44,15 +44,15 @@ class MockDrupalSystem implements DrupalSystemInterface {
   /**
    * {@inheritdoc}
    */
-  function drupalGetFilename($type, $name) {
-    return $this->components->DrupalGetFilename->drupalGetFilename($type, $name);
+  function backdropGetFilename($type, $name) {
+    return $this->components->DrupalGetFilename->backdropGetFilename($type, $name);
   }
 
   /**
    * {@inheritdoc}
    */
-  function drupalGetPath($type, $name) {
-    return $this->components->DrupalGetFilename->drupalGetPath($type, $name);
+  function backdropGetPath($type, $name) {
+    return $this->components->DrupalGetFilename->backdropGetPath($type, $name);
   }
 
   /**
@@ -129,14 +129,14 @@ class MockDrupalSystem implements DrupalSystemInterface {
    * @param string $hook
    * @param mixed $data
    */
-  function drupalAlter($hook, &$data) {
+  function backdropAlter($hook, &$data) {
     $args = func_get_args();
     assert($hook === array_shift($args));
     assert($data === array_shift($args));
     while (count($args) < 3) {
       $args[] = NULL;
     }
-    $this->components->HookSystem->drupalAlter($hook, $data, $args[0], $args[1], $args[2]);
+    $this->components->HookSystem->backdropAlter($hook, $data, $args[0], $args[1], $args[2]);
   }
 
   /**
@@ -152,7 +152,7 @@ class MockDrupalSystem implements DrupalSystemInterface {
     if (!isset($name)) {
       $name = $module;
     }
-    $file = $this->drupalGetPath('module', $module) . "/$name.$type";
+    $file = $this->backdropGetPath('module', $module) . "/$name.$type";
     if (is_file($file)) {
       require_once $file;
       return $file;
@@ -239,7 +239,7 @@ class MockDrupalSystem implements DrupalSystemInterface {
   /**
    * @param string $key
    */
-  public function drupalStaticReset($key) {
+  public function backdropStaticReset($key) {
     $this->components->DrupalStatic->resetKey($key);
   }
 

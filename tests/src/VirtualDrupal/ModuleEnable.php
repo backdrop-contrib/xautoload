@@ -10,7 +10,7 @@ class ModuleEnable {
   /**
    * @var DrupalGetFilename
    */
-  private $drupalGetFilename;
+  private $backdropGetFilename;
 
   /**
    * @var SystemTable
@@ -43,7 +43,7 @@ class ModuleEnable {
   private $systemRebuildModuleData;
 
   /**
-   * @param DrupalGetFilename $drupalGetFilename
+   * @param DrupalGetFilename $backdropGetFilename
    * @param HookSystem $hookSystem
    * @param ModuleList $moduleList
    * @param SystemTable $systemTable
@@ -52,7 +52,7 @@ class ModuleEnable {
    * @param SystemUpdateBootstrapStatus $systemUpdateBootstrapStatus
    */
   function __construct(
-    DrupalGetFilename $drupalGetFilename,
+    DrupalGetFilename $backdropGetFilename,
     HookSystem $hookSystem,
     ModuleList $moduleList,
     SystemTable $systemTable,
@@ -60,7 +60,7 @@ class ModuleEnable {
     SystemRebuildModuleData $systemRebuildModuleData,
     SystemUpdateBootstrapStatus $systemUpdateBootstrapStatus
   ) {
-    $this->drupalGetFilename = $drupalGetFilename;
+    $this->backdropGetFilename = $backdropGetFilename;
     $this->hookSystem = $hookSystem;
     $this->moduleList = $moduleList;
     $this->systemTable = $systemTable;
@@ -178,7 +178,7 @@ class ModuleEnable {
    */
   private function enableModule($extension, $install) {
 
-    $filename = $this->drupalGetFilename->drupalGetFilename('module', $extension);
+    $filename = $this->backdropGetFilename->backdropGetFilename('module', $extension);
 
     // Include module files.
     require_once $filename;
@@ -198,9 +198,9 @@ class ModuleEnable {
     // Update the registry to include it.
     # registry_update();
     // Refresh the schema to include it.
-    # drupal_get_schema(NULL, TRUE);
+    # backdrop_get_schema(NULL, TRUE);
     // Update the theme registry to include it.
-    # drupal_theme_rebuild();
+    # backdrop_theme_rebuild();
     // Clear entity cache.
     # entity_info_cache_clear();
 

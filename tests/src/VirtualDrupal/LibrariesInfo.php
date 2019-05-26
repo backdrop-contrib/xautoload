@@ -9,7 +9,7 @@ class LibrariesInfo {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
    * @var HookSystem
@@ -17,11 +17,11 @@ class LibrariesInfo {
   private $hookSystem;
 
   /**
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    * @param HookSystem $hookSystem
    */
-  function __construct(DrupalStatic $drupalStatic, HookSystem $hookSystem) {
-    $this->drupalStatic = $drupalStatic;
+  function __construct(DrupalStatic $backdropStatic, HookSystem $hookSystem) {
+    $this->backdropStatic = $backdropStatic;
     $this->hookSystem = $hookSystem;
   }
 
@@ -34,7 +34,7 @@ class LibrariesInfo {
    */
   function &getLibrariesInfo($name = NULL) {
     // This static cache is re-used by libraries_detect() to save memory.
-    $libraries = &$this->drupalStatic->get('libraries_info');
+    $libraries = &$this->backdropStatic->get('libraries_info');
 
     if (!isset($libraries)) {
       $libraries = array();
@@ -47,7 +47,7 @@ class LibrariesInfo {
       }
 
       // Gather information from hook_libraries_info() in enabled themes.
-      // @see drupal_alter()
+      // @see backdrop_alter()
       // SKIPPED
 
       // Gather information from .info files.
@@ -60,7 +60,7 @@ class LibrariesInfo {
       }
 
       // Allow modules to alter the registered libraries.
-      $this->hookSystem->drupalAlter('libraries_info', $libraries);
+      $this->hookSystem->backdropAlter('libraries_info', $libraries);
 
       // Invoke callbacks in the 'info' group.
       // SKIPPED
@@ -129,7 +129,7 @@ class LibrariesInfo {
    * @return string|bool
    */
   public function librariesGetPath($name, $base_path = FALSE) {
-    $libraries = &$this->drupalStatic->get('libraries_get_path');
+    $libraries = &$this->backdropStatic->get('libraries_get_path');
 
     if (!isset($libraries)) {
       $libraries = $this->librariesGetLibraries();
@@ -151,7 +151,7 @@ class LibrariesInfo {
    */
   private function librariesGetLibraries() {
     $searchdir = array();
-    # $profile = drupal_get_path('profile', drupal_get_profile());
+    # $profile = backdrop_get_path('profile', backdrop_get_profile());
     # $config = conf_path();
 
     // Similar to 'modules' and 'themes' directories in the root directory,
@@ -193,6 +193,6 @@ class LibrariesInfo {
   }
 
   public function resetLibrariesInfo() {
-    $this->drupalStatic->resetKey('libraries_info');
+    $this->backdropStatic->resetKey('libraries_info');
   }
 }

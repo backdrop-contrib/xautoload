@@ -11,7 +11,7 @@ class XAutoloadUnitTestCase extends \DrupalUnitTestCase {
 
   function setUp() {
 
-    // drupal_load('module', 'xautoload') would register namespaces for all
+    // backdrop_load('module', 'xautoload') would register namespaces for all
     // enabled modules, which is not intended for this unit test.
     // Instead, we just include xautoload.early.inc.
     require_once __DIR__ . '/../xautoload.early.inc';
@@ -37,7 +37,7 @@ class XAutoloadUnitTestCase extends \DrupalUnitTestCase {
   function testAutoloadStackOrder() {
     $expected = array(
       'Drupal\\xautoload\\ClassFinder\\ClassFinder->loadClass()',
-      /* @see _drupal_bootstrap_database() */
+      /* @see _backdrop_bootstrap_database() */
       'backdrop_autoload',
       /* @see simpletest_classloader_register() */
       //'_simpletest_autoload_psr4_psr0',

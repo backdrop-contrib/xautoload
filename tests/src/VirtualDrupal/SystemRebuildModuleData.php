@@ -9,7 +9,7 @@ class SystemRebuildModuleData {
   /**
    * @var DrupalStatic
    */
-  private $drupalStatic;
+  private $backdropStatic;
 
   /**
    * @var SystemBuildModuleData
@@ -32,20 +32,20 @@ class SystemRebuildModuleData {
   private $systemListReset;
 
   /**
-   * @param DrupalStatic $drupalStatic
+   * @param DrupalStatic $backdropStatic
    * @param ModuleBuildDependencies $moduleBuildDependencies
    * @param SystemTable $systemTable
    * @param SystemBuildModuleData $systemBuildModuleData
    * @param SystemListReset $systemListReset
    */
   function __construct(
-    DrupalStatic $drupalStatic,
+    DrupalStatic $backdropStatic,
     ModuleBuildDependencies $moduleBuildDependencies,
     SystemTable $systemTable,
     SystemBuildModuleData $systemBuildModuleData,
     SystemListReset $systemListReset
   ) {
-    $this->drupalStatic = $drupalStatic;
+    $this->backdropStatic = $backdropStatic;
     $this->moduleBuildDependencies = $moduleBuildDependencies;
     $this->systemTable = $systemTable;
     $this->systemBuildModuleData = $systemBuildModuleData;
@@ -60,7 +60,7 @@ class SystemRebuildModuleData {
    * @return array[]
    */
   public function systemRebuildModuleData() {
-    $modules_cache = &$this->drupalStatic->get('system_rebuild_module_data');
+    $modules_cache = &$this->backdropStatic->get('system_rebuild_module_data');
     // Only rebuild once per request. $modules and $modules_cache cannot be
     // combined into one variable, because the $modules_cache variable is reset by
     // reference from system_list_reset() during the rebuild.
