@@ -2,7 +2,7 @@
 
 //namespace Drupal\xautoload\Tests;
 
-class XAutoloadWebTestCase extends \DrupalWebTestCase {
+class XAutoloadWebTestCase extends \BackdropWebTestCase {
 
   /**
    * {@inheritdoc}

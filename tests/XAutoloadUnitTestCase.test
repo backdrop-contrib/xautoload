@@ -7,7 +7,7 @@ use Drupal\xautoload\ClassFinder\InjectedApi\CollectFilesInjectedApi;
 use Drupal\xautoload\ClassLoader\ClassLoaderInterface;
 use Drupal\xautoload\Util;
 
-class XAutoloadUnitTestCase extends \DrupalUnitTestCase {
+class XAutoloadUnitTestCase extends \BackdropUnitTestCase {
 
   function setUp() {
 
