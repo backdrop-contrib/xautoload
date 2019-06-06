@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class ModuleBuildDependencies {
@@ -166,7 +166,7 @@ class ModuleBuildDependencies {
         if (preg_match("/^\s*$p_op\s*$p_core$p_major\.$p_minor/", $version, $matches)) {
           $op = !empty($matches['operation']) ? $matches['operation'] : '=';
           if ($matches['minor'] == 'x') {
-            // Drupal considers "2.x" to mean any version that begins with
+            // Backdrop considers "2.x" to mean any version that begins with
             // "2" (e.g. 2.0, 2.9 are all "2.x"). PHP's version_compare(),
             // on the other hand, treats "x" as a string; so to
             // version_compare(), "2.x" is considered less than 2.0. This

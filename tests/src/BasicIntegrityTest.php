@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
 /**
  * A test class to verify that all class files work well across PHP versions.
@@ -13,8 +13,8 @@ class BasicIntegrityTest extends \PHPUnit_Framework_TestCase {
    */
   public function testIncludeAll() {
     $lib = dirname(dirname(__DIR__)) . '/lib';
-    $skip = array($lib . '/Drupal');
-    $this->includeAllRecursivePsr4($lib, 'Drupal\xautoload', $skip);
+    $skip = array($lib . '/Backdrop');
+    $this->includeAllRecursivePsr4($lib, 'Backdrop\xautoload', $skip);
   }
 
   /**

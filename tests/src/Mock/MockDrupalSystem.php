@@ -1,15 +1,15 @@
 <?php
 
-namespace Drupal\xautoload\Tests\Mock;
+namespace Backdrop\xautoload\Tests\Mock;
 
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Tests\VirtualDrupal\DrupalComponentContainer;
-use Drupal\xautoload\Tests\VirtualDrupal\PureFunctions;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Tests\VirtualBackdrop\BackdropComponentContainer;
+use Backdrop\xautoload\Tests\VirtualBackdrop\PureFunctions;
 
-class MockDrupalSystem implements DrupalSystemInterface {
+class MockBackdropSystem implements BackdropSystemInterface {
 
   /**
-   * @var DrupalComponentContainer
+   * @var BackdropComponentContainer
    */
   private $components;
 
@@ -19,9 +19,9 @@ class MockDrupalSystem implements DrupalSystemInterface {
   private $variables = array();
 
   /**
-   * @param DrupalComponentContainer $components
+   * @param BackdropComponentContainer $components
    */
-  function __construct(DrupalComponentContainer $components) {
+  function __construct(BackdropComponentContainer $components) {
     $this->components = $components;
   }
 
@@ -45,14 +45,14 @@ class MockDrupalSystem implements DrupalSystemInterface {
    * {@inheritdoc}
    */
   function backdropGetFilename($type, $name) {
-    return $this->components->DrupalGetFilename->backdropGetFilename($type, $name);
+    return $this->components->BackdropGetFilename->backdropGetFilename($type, $name);
   }
 
   /**
    * {@inheritdoc}
    */
   function backdropGetPath($type, $name) {
-    return $this->components->DrupalGetFilename->backdropGetPath($type, $name);
+    return $this->components->BackdropGetFilename->backdropGetPath($type, $name);
   }
 
   /**
@@ -240,7 +240,7 @@ class MockDrupalSystem implements DrupalSystemInterface {
    * @param string $key
    */
   public function backdropStaticReset($key) {
-    $this->components->DrupalStatic->resetKey($key);
+    $this->components->BackdropStatic->resetKey($key);
   }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 function testmod_pearflat_init() {
   StaticCallLog::addCall();

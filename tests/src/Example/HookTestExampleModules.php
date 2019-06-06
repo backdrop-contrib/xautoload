@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Example;
+namespace Backdrop\xautoload\Tests\Example;
 
 
-use Drupal\xautoload\Tests\DrupalBootTest\AbstractDrupalBootTest;
-use Drupal\xautoload\Tests\Filesystem\VirtualFilesystem;
+use Backdrop\xautoload\Tests\BackdropBootTest\AbstractBackdropBootTest;
+use Backdrop\xautoload\Tests\Filesystem\VirtualFilesystem;
 
 /**
- * @see DrupalBootHookTest
+ * @see BackdropBootHookTest
  */
 class HookTestExampleModules extends AbstractExampleModules {
 
@@ -28,7 +28,7 @@ class HookTestExampleModules extends AbstractExampleModules {
   public function getExampleClasses() {
     return array(
       'testmod' => array(
-        'Drupal\\testmod\\Foo',
+        'Backdrop\\testmod\\Foo',
         'Acme\\TestLib\\Foo',
       ),
     );

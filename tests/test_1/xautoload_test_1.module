@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload\Tests\EnvironmentSnapshotMaker;
+use Backdrop\xautoload\Tests\EnvironmentSnapshotMaker;
 
 /**
  * Implements hook_boot()
@@ -17,7 +17,7 @@ _xautoload_test_1_early_boot_observations('early');
  * Test the current state, and remember it.
  */
 function _xautoload_test_1_early_boot_observations($phase = NULL) {
-  EnvironmentSnapshotMaker::takeSnapshot('xautoload_test_1', $phase, array('Drupal\xautoload_test_1\ExampleClass'));
+  EnvironmentSnapshotMaker::takeSnapshot('xautoload_test_1', $phase, array('Backdrop\xautoload_test_1\ExampleClass'));
 }
 
 /**

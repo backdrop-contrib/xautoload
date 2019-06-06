@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Drupal\xautoload\Libraries;
+namespace Backdrop\xautoload\Libraries;
 
 
-use Drupal\xautoload\CacheMissObserver\CacheMissObserverInterface;
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\CacheMissObserver\CacheMissObserverInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
 
 class LibraryCacheMissObserver implements CacheMissObserverInterface {
 

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class LibrariesInfo {
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
@@ -17,10 +17,10 @@ class LibrariesInfo {
   private $hookSystem;
 
   /**
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    * @param HookSystem $hookSystem
    */
-  function __construct(DrupalStatic $backdropStatic, HookSystem $hookSystem) {
+  function __construct(BackdropStatic $backdropStatic, HookSystem $hookSystem) {
     $this->backdropStatic = $backdropStatic;
     $this->hookSystem = $hookSystem;
   }
@@ -156,7 +156,7 @@ class LibrariesInfo {
 
     // Similar to 'modules' and 'themes' directories in the root directory,
     // certain distributions may want to place libraries into a 'libraries'
-    // directory in Drupal's root directory.
+    // directory in Backdrop's root directory.
     # $searchdir[] = 'libraries';
 
     // Similar to 'modules' and 'themes' directories inside an installation

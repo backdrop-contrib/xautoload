@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class LibrariesLoad {
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
@@ -22,11 +22,11 @@ class LibrariesLoad {
   private $librariesInfo;
 
   /**
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    * @param Cache $cache
    * @param LibrariesInfo $librariesInfo
    */
-  function __construct(DrupalStatic $backdropStatic, Cache $cache, LibrariesInfo $librariesInfo) {
+  function __construct(BackdropStatic $backdropStatic, Cache $cache, LibrariesInfo $librariesInfo) {
     $this->backdropStatic = $backdropStatic;
     $this->cache = $cache;
     $this->librariesInfo = $librariesInfo;

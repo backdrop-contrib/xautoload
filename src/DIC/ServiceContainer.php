@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\DIC;
+namespace Backdrop\xautoload\DIC;
 
 /**
  * @see ServiceFactory

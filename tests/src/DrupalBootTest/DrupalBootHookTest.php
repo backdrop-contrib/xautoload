@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\DrupalBootTest;
+namespace Backdrop\xautoload\Tests\BackdropBootTest;
 
 
-use Drupal\xautoload\Tests\Example\HookTestExampleModules;
-use Drupal\xautoload\Tests\VirtualDrupal\DrupalEnvironment;
-use Drupal\xautoload\Tests\Filesystem\StreamWrapper;
-use Drupal\xautoload\Tests\Util\CallLog;
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\xautoload\Tests\Example\HookTestExampleModules;
+use Backdrop\xautoload\Tests\VirtualBackdrop\BackdropEnvironment;
+use Backdrop\xautoload\Tests\Filesystem\StreamWrapper;
+use Backdrop\xautoload\Tests\Util\CallLog;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 // Due to problems with @runTestsInSeparateProcesses and @preserveGlobalState,
 // this file needs to be included manually.
@@ -22,7 +22,7 @@ require_once dirname(dirname(__DIR__)) . '/bootstrap.php';
  *
  * @see HookTestExampleModules
  */
-class DrupalBootHookTest extends AbstractDrupalBootTest {
+class BackdropBootHookTest extends AbstractBackdropBootTest {
 
   /**
    * @return array[]
@@ -109,12 +109,12 @@ class DrupalBootHookTest extends AbstractDrupalBootTest {
   }
 
   function initOnce() {
-    if (isset($this->exampleDrupal)) {
+    if (isset($this->exampleBackdrop)) {
       return;
     }
     $this->exampleModules = new HookTestExampleModules();
-    $this->exampleDrupal = new DrupalEnvironment($this->exampleModules);
-    $this->exampleDrupal->setStaticInstance();
+    $this->exampleBackdrop = new BackdropEnvironment($this->exampleModules);
+    $this->exampleBackdrop->setStaticInstance();
   }
 
   /**
@@ -127,12 +127,12 @@ class DrupalBootHookTest extends AbstractDrupalBootTest {
     $this->initOnce();
     $filesystem = StreamWrapper::register('test');
     foreach ($this->exampleModules->discoverModuleFilenames('module') as $name => $filename) {
-      $this->exampleDrupal->getSystemTable()->addModuleWithFilename($name, $filename);
+      $this->exampleBackdrop->getSystemTable()->addModuleWithFilename($name, $filename);
     }
-    $this->exampleDrupal->getSystemTable()->moduleSetEnabled('system');
-    $this->exampleDrupal->initBootstrapStatus();
-    # $this->exampleDrupal->getCache()->cacheSet('module_implements', $data, 'cache_bootstrap');
-    xautoload()->getServiceContainer()->set('system', $this->exampleDrupal->getMockDrupalSystem());
+    $this->exampleBackdrop->getSystemTable()->moduleSetEnabled('system');
+    $this->exampleBackdrop->initBootstrapStatus();
+    # $this->exampleBackdrop->getCache()->cacheSet('module_implements', $data, 'cache_bootstrap');
+    xautoload()->getServiceContainer()->set('system', $this->exampleBackdrop->getMockBackdropSystem());
     $this->callLog = new CallLog();
     StaticCallLog::setCallLog($this->callLog);
   }

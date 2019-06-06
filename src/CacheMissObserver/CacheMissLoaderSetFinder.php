@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\CacheMissObserver;
+namespace Backdrop\xautoload\CacheMissObserver;
 
-use Drupal\xautoload\ClassLoader\AbstractClassLoaderDecorator;
+use Backdrop\xautoload\ClassLoader\AbstractClassLoaderDecorator;
 
 /**
  * Replaces the ProxyClassFinder in the ClassLoader with the real ClassLoader.

@@ -1,15 +1,15 @@
 <?php
 
 
-namespace Drupal\xautoload\Phases;
+namespace Backdrop\xautoload\Phases;
 
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
 
 /**
- * Observes switching into specific "phases" of a Drupal process.
+ * Observes switching into specific "phases" of a Backdrop process.
  *
- * @see \Drupal\xautoload\Phases\DrupalPhaseControl
+ * @see \Backdrop\xautoload\Phases\BackdropPhaseControl
  *
  * These phases only fire after the class loader had a cache fail.
  * This way, all the initialization logic, subscribing module namespaces etc,

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
-class DrupalLoad {
+class BackdropLoad {
 
   /**
    * @var array
@@ -12,14 +12,14 @@ class DrupalLoad {
   private $files = array();
 
   /**
-   * @var DrupalGetFilename
+   * @var BackdropGetFilename
    */
   private $backdropGetFilename;
 
   /**
-   * @param DrupalGetFilename $backdropGetFilename
+   * @param BackdropGetFilename $backdropGetFilename
    */
-  function __construct(DrupalGetFilename $backdropGetFilename) {
+  function __construct(BackdropGetFilename $backdropGetFilename) {
     $this->backdropGetFilename = $backdropGetFilename;
   }
 

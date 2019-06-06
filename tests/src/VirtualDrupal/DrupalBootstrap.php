@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 
-class DrupalBootstrap {
+class BackdropBootstrap {
 
   /**
    * @var HookSystem
@@ -18,7 +18,7 @@ class DrupalBootstrap {
   private $moduleList;
 
   /**
-   * @var DrupalLoad
+   * @var BackdropLoad
    */
   private $backdropLoad;
 
@@ -30,11 +30,11 @@ class DrupalBootstrap {
   private $moduleLoadAllHasRun = FALSE;
 
   /**
-   * @param DrupalLoad $backdropLoad
+   * @param BackdropLoad $backdropLoad
    * @param HookSystem $hookSystem
    * @param ModuleList $moduleList
    */
-  function __construct(DrupalLoad $backdropLoad, HookSystem $hookSystem, ModuleList $moduleList) {
+  function __construct(BackdropLoad $backdropLoad, HookSystem $hookSystem, ModuleList $moduleList) {
     $this->backdropLoad = $backdropLoad;
     $this->hookSystem = $hookSystem;
     $this->moduleList = $moduleList;

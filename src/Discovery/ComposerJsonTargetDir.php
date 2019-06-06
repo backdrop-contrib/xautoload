@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\Util;
 
 class ComposerJsonTargetDir extends ComposerJson {
 

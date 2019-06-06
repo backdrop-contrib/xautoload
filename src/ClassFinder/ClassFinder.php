@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
-use Drupal\xautoload\ClassLoader\AbstractClassLoader;
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\ClassLoader\AbstractClassLoader;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\Util;
 
 class ClassFinder extends AbstractClassLoader implements ExtendedClassFinderInterface {
 

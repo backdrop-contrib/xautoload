@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\Tests\Filesystem\StreamWrapper;
-use Drupal\xautoload\Tests\Filesystem\VirtualFilesystem;
+use Backdrop\xautoload\Tests\Filesystem\StreamWrapper;
+use Backdrop\xautoload\Tests\Filesystem\VirtualFilesystem;
 
 class ClassFinderAdapterTest extends \PHPUnit_Framework_TestCase {
 

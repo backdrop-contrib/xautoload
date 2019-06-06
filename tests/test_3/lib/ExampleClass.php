@@ -1,5 +1,5 @@
 <?php
 
-namespace Drupal\xautoload_test_3;
+namespace Backdrop\xautoload_test_3;
 
 class ExampleClass {}

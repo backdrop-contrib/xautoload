@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 
 /**
- * Virtual Drupal database / persistence layer.
+ * Virtual Backdrop database / persistence layer.
  *
  * This is not really a simulated database, but one abstraction level higher.
  */

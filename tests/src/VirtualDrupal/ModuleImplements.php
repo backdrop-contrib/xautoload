@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class ModuleImplements {
@@ -34,17 +34,17 @@ class ModuleImplements {
   private $writeCache = FALSE;
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
   /**
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    * @param Cache $cache
    * @param ModuleList $moduleList
    * @param HookSystem $hookSystem
    */
-  function __construct(DrupalStatic $backdropStatic, Cache $cache, ModuleList $moduleList, HookSystem $hookSystem) {
+  function __construct(BackdropStatic $backdropStatic, Cache $cache, ModuleList $moduleList, HookSystem $hookSystem) {
     $this->backdropStatic = $backdropStatic;
     $this->cache = $cache;
     $this->moduleList = $moduleList;
@@ -105,7 +105,7 @@ class ModuleImplements {
       $implementations[$hook] = $this->discoverImplementations($hook, $sort);
     }
     else {
-      // @todo Change this when https://drupal.org/node/2263365 has landed in Drupal core.
+      // @todo Change this when https://drupal.org/node/2263365 has landed in Backdrop core.
       $this->filterImplementations($implementations[$hook], $hook);
     }
 

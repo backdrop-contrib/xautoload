@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\xautoload\DrupalSystem;
+namespace Backdrop\xautoload\BackdropSystem;
 
-class DrupalSystem implements DrupalSystemInterface {
+class BackdropSystem implements BackdropSystemInterface {
 
   function __construct() {
     if (!function_exists('backdrop_get_filename')) {
-      throw new \Exception("This class works only within a working Drupal environment.");
+      throw new \Exception("This class works only within a working Backdrop environment.");
     }
   }
 

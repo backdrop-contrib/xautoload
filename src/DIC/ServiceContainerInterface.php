@@ -1,18 +1,18 @@
 <?php
-namespace Drupal\xautoload\DIC;
+namespace Backdrop\xautoload\DIC;
 
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
-use Drupal\xautoload\Adapter\DrupalExtensionAdapter;
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\CacheManager\CacheManager;
-use Drupal\xautoload\ClassFinder\ProxyClassFinder;
-use Drupal\xautoload\Discovery\ClassMapGenerator;
-use Drupal\xautoload\Discovery\ClassMapGeneratorInterface;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Libraries\LibrariesInfoAlter;
-use Drupal\xautoload\Phases\DrupalPhaseControl;
-use Drupal\xautoload\Phases\ExtensionNamespaces;
-use Drupal\xautoload\Main;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\Adapter\BackdropExtensionAdapter;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\CacheManager\CacheManager;
+use Backdrop\xautoload\ClassFinder\ProxyClassFinder;
+use Backdrop\xautoload\Discovery\ClassMapGenerator;
+use Backdrop\xautoload\Discovery\ClassMapGeneratorInterface;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Libraries\LibrariesInfoAlter;
+use Backdrop\xautoload\Phases\BackdropPhaseControl;
+use Backdrop\xautoload\Phases\ExtensionNamespaces;
+use Backdrop\xautoload\Main;
 
 /**
  * @property Main $main
@@ -24,14 +24,14 @@ use Drupal\xautoload\Main;
  * @property ExtendedClassFinderInterface $classFinder
  * @property ExtendedClassFinderInterface $finder
  *   Alias for ->classFinder
- * @property DrupalSystemInterface $system
- * @property DrupalPhaseControl $phaseControl
- * @property DrupalExtensionAdapter $extensionRegistrationService
+ * @property BackdropSystemInterface $system
+ * @property BackdropPhaseControl $phaseControl
+ * @property BackdropExtensionAdapter $extensionRegistrationService
  * @property ExtensionNamespaces extensionNamespaces
  * @property LibrariesInfoAlter librariesInfoAlter
  *
- * @see \Drupal\xautoload\DIC\ServiceContainer
- * @see \Drupal\xautoload\DIC\ServiceFactory
+ * @see \Backdrop\xautoload\DIC\ServiceContainer
+ * @see \Backdrop\xautoload\DIC\ServiceFactory
  */
 interface ServiceContainerInterface {
 

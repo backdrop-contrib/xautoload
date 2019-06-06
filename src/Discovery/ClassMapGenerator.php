@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
 class ClassMapGenerator implements ClassMapGeneratorInterface {
 

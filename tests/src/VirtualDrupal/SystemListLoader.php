@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class SystemListLoader {
@@ -49,7 +49,7 @@ class SystemListLoader {
 
     // The module name (rather than the filename) is used as the fallback
     // weighting in order to guarantee consistent behavior across different
-    // Drupal installations, which might have modules installed in different
+    // Backdrop installations, which might have modules installed in different
     // locations in the file system. The ordering here must also be
     // consistent with the one used in module_implements().
     foreach ($this->systemTable->systemTableSortedObjects() as $record) {

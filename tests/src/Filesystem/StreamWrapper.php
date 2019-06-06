@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Filesystem;
+namespace Backdrop\xautoload\Tests\Filesystem;
 
 
 /**
@@ -26,7 +26,7 @@ class StreamWrapper {
    * @throws \Exception
    */
   static function register($protocol) {
-    if (!stream_wrapper_register($protocol, 'Drupal\xautoload\Tests\Filesystem\StreamWrapper')) {
+    if (!stream_wrapper_register($protocol, 'Backdrop\xautoload\Tests\Filesystem\StreamWrapper')) {
       throw new \Exception("Failed to register stream wrapper.");
     }
     self::$filesystem = new VirtualFilesystem();

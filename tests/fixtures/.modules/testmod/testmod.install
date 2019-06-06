@@ -1,16 +1,16 @@
 <?php
 
 function testmod_enable() {
-  \Drupal\xautoload\Tests\Util\StaticCallLog::addCall();
-  # new \Drupal\testmod\Foo();
+  \Backdrop\xautoload\Tests\Util\StaticCallLog::addCall();
+  # new \Backdrop\testmod\Foo();
 }
 
 function testmod_install() {
-  \Drupal\xautoload\Tests\Util\StaticCallLog::addCall();
-  # new \Drupal\testmod\Foo();
+  \Backdrop\xautoload\Tests\Util\StaticCallLog::addCall();
+  # new \Backdrop\testmod\Foo();
 }
 
 function testmod_schema() {
-  \Drupal\xautoload\Tests\Util\StaticCallLog::addCall();
-  # new \Drupal\testmod\Foo();
+  \Backdrop\xautoload\Tests\Util\StaticCallLog::addCall();
+  # new \Backdrop\testmod\Foo();
 }

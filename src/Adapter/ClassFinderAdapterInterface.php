@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\Adapter;
+namespace Backdrop\xautoload\Adapter;
 
-use Drupal\xautoload\ClassFinder\CommonRegistrationInterface;
+use Backdrop\xautoload\ClassFinder\CommonRegistrationInterface;
 
 interface ClassFinderAdapterInterface extends CommonRegistrationInterface {
 

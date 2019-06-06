@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload\ClassLoader;
+namespace Backdrop\xautoload\ClassLoader;
 
-use Drupal\xautoload\CacheManager\CacheManagerObserverInterface;
-use Drupal\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
+use Backdrop\xautoload\CacheManager\CacheManagerObserverInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
 
 class WinCacheClassLoader extends AbstractCachedClassLoader implements CacheManagerObserverInterface {
 

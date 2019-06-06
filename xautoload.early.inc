@@ -5,7 +5,7 @@
  * e.g. from your site's settings.php, to make the class loader available for
  * external libraries during bootstrap.
  *
- * This will *not* register any Drupal modules, because information about these
+ * This will *not* register any Backdrop modules, because information about these
  * might not be available yet.
  */
 

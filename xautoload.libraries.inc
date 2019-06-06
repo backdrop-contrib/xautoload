@@ -1,6 +1,6 @@
 <?php
-use Drupal\xautoload\Libraries\SerializableClosureWrapper;
-use Drupal\xautoload\Libraries\LibrariesPreLoadCallback;
+use Backdrop\xautoload\Libraries\SerializableClosureWrapper;
+use Backdrop\xautoload\Libraries\LibrariesPreLoadCallback;
 
 /**
  * Implements hook_libraries_info_alter()

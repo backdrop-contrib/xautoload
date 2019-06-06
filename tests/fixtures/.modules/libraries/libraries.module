@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload\Tests\VirtualDrupal\DrupalEnvironment;
+use Backdrop\xautoload\Tests\VirtualBackdrop\BackdropEnvironment;
 
 /**
  * @param string $name
@@ -8,5 +8,5 @@ use Drupal\xautoload\Tests\VirtualDrupal\DrupalEnvironment;
  * @see libraries_load()
  */
 function libraries_load($name) {
-  DrupalEnvironment::getInstance()->librariesLoad($name);
+  BackdropEnvironment::getInstance()->librariesLoad($name);
 }

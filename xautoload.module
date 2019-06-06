@@ -1,16 +1,16 @@
 <?php
 
-use Drupal\xautoload\ClassLoader\ApcClassLoader;
-use Drupal\xautoload\ClassLoader\ApcuClassLoader;
-use Drupal\xautoload\ClassLoader\ApcuQueuedCachedClassLoader;
-use Drupal\xautoload\ClassLoader\DbCacheClassLoader;
-use Drupal\xautoload\ClassLoader\WinCacheClassLoader;
-use Drupal\xautoload\ClassLoader\XCacheClassLoader;
-use Drupal\xautoload\CacheMissObserver\CacheMissLoaderSetFinder;
+use Backdrop\xautoload\ClassLoader\ApcClassLoader;
+use Backdrop\xautoload\ClassLoader\ApcuClassLoader;
+use Backdrop\xautoload\ClassLoader\ApcuQueuedCachedClassLoader;
+use Backdrop\xautoload\ClassLoader\DbCacheClassLoader;
+use Backdrop\xautoload\ClassLoader\WinCacheClassLoader;
+use Backdrop\xautoload\ClassLoader\XCacheClassLoader;
+use Backdrop\xautoload\CacheMissObserver\CacheMissLoaderSetFinder;
 
 /*
  * When the module has just been installed,
- * Drupal does not know yet this is a boot-level module.
+ * Backdrop does not know yet this is a boot-level module.
  *
  * We can not rely on hook_boot() to fire, and instead register the autoloader
  * on inclusion of this *.module file.
@@ -24,7 +24,7 @@ _xautoload_register_backdrop();
 /**
  * Implements hook_boot()
  *
- * This is only to let Drupal know we want this module to load in bootstrap.
+ * This is only to let Backdrop know we want this module to load in bootstrap.
  */
 function xautoload_boot() {}
 
@@ -81,7 +81,7 @@ function xautoload_module_implements_alter(&$implementations, $hook) {
   // Check if new modules have been enabled.
   if ('boot' === $hook) {
 
-    # \Drupal\xautoload\Tests\HackyLog::log($hook);
+    # \Backdrop\xautoload\Tests\HackyLog::log($hook);
     // hook_module_implements_alter('boot') gets called (indirectly) from
     // _system_update_bootstrap_status(), which happens each time a new module
     // is enabled.
@@ -122,7 +122,7 @@ function xautoload_module_implements_alter(&$implementations, $hook) {
 // -----------------------------------------------------------------------------
 
 /**
- * Registers Drupal-related namespaces and prefixes in the xautoload loader, and
+ * Registers Backdrop-related namespaces and prefixes in the xautoload loader, and
  * activates the APC (or similar) cache, if enabled.
  */
 function _xautoload_register_backdrop() {

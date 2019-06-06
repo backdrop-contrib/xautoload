@@ -1,26 +1,26 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\DrupalBootTest;
+namespace Backdrop\xautoload\Tests\BackdropBootTest;
 
-use Drupal\xautoload\Tests\Example\AbstractExampleModules;
-use Drupal\xautoload\Tests\VirtualDrupal\DrupalEnvironment;
-use Drupal\xautoload\Tests\Util\CallLog;
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\xautoload\Tests\Example\AbstractExampleModules;
+use Backdrop\xautoload\Tests\VirtualBackdrop\BackdropEnvironment;
+use Backdrop\xautoload\Tests\Util\CallLog;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 /**
  * @runTestsInSeparateProcesses
  * @preserveGlobalState disabled
  *
- * @see DrupalBootHookTest
- * @see DrupalBootTest
+ * @see BackdropBootHookTest
+ * @see BackdropBootTest
  */
-abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
+abstract class AbstractBackdropBootTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var DrupalEnvironment
+   * @var BackdropEnvironment
    */
-  protected $exampleDrupal;
+  protected $exampleBackdrop;
 
   /**
    * @var AbstractExampleModules
@@ -61,7 +61,7 @@ abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
 
     $this->prepareAllEnabled();
 
-    $this->exampleDrupal->boot();
+    $this->exampleBackdrop->boot();
 
     $expectedCalls = $this->getExpectedCallsForNormalRequest();
 
@@ -101,10 +101,10 @@ abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
       }
     }
 
-    $this->exampleDrupal->boot();
+    $this->exampleBackdrop->boot();
 
     $new_modules = array_keys($this->exampleModules->getExampleClasses());
-    $this->exampleDrupal->moduleEnable($new_modules);
+    $this->exampleBackdrop->moduleEnable($new_modules);
 
     # HackyLog::log($this->callLog->getCalls());
 
@@ -130,12 +130,12 @@ abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
    */
   private function prepareAllEnabled() {
     foreach (array('system', 'xautoload', 'libraries') as $name) {
-      $this->exampleDrupal->getSystemTable()->moduleSetEnabled($name);
+      $this->exampleBackdrop->getSystemTable()->moduleSetEnabled($name);
     }
     foreach ($this->exampleModules->getExampleClasses() as $name => $classes) {
-      $this->exampleDrupal->getSystemTable()->moduleSetEnabled($name);
+      $this->exampleBackdrop->getSystemTable()->moduleSetEnabled($name);
     }
-    $this->exampleDrupal->getSystemTable()->moduleSetWeight('xautoload', -90);
+    $this->exampleBackdrop->getSystemTable()->moduleSetWeight('xautoload', -90);
   }
 
   /**
@@ -148,12 +148,12 @@ abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
     foreach ($initialModules as $name => $state) {
       if (TRUE === $state) {
         // Module is installed and enabled.
-        $this->exampleDrupal->getSystemTable()->moduleSetEnabled($name);
-        $this->exampleDrupal->getSystemTable()->moduleSetSchemaVersion($name, 7000);
+        $this->exampleBackdrop->getSystemTable()->moduleSetEnabled($name);
+        $this->exampleBackdrop->getSystemTable()->moduleSetSchemaVersion($name, 7000);
       }
       elseif (FALSE === $state) {
         // Module is installed, but disabled.
-        $this->exampleDrupal->getSystemTable()->moduleSetSchemaVersion($name, 7000);
+        $this->exampleBackdrop->getSystemTable()->moduleSetSchemaVersion($name, 7000);
       }
       elseif (NULL === $state) {
         // Module is neither installed nor enabled.
@@ -164,7 +164,7 @@ abstract class AbstractDrupalBootTest extends \PHPUnit_Framework_TestCase {
     }
     if (isset($initialModules['xautoload'])) {
       // xautoload is installed or enabled, so the module weight must be in the database.
-      $this->exampleDrupal->getSystemTable()->moduleSetWeight('xautoload', -90);
+      $this->exampleBackdrop->getSystemTable()->moduleSetWeight('xautoload', -90);
     }
   }
 

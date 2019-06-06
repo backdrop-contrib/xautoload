@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\xautoload\ClassLoader;
+namespace Backdrop\xautoload\ClassLoader;
 
-use Drupal\xautoload\CacheManager\CacheManager;
-use Drupal\xautoload\ClassFinder\ClassFinderInterface;
-use Drupal\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
+use Backdrop\xautoload\CacheManager\CacheManager;
+use Backdrop\xautoload\ClassFinder\ClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
 
 /**
- * A class loader decorator using Drupal's native db cache.
+ * A class loader decorator using Backdrop's native db cache.
  */
 class DbCacheClassLoader extends AbstractQueuedCachedClassLoader {
 

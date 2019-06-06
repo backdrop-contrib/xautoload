@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Libraries;
+namespace Backdrop\xautoload\Libraries;
 
 
 class LibrariesInfoAlter {

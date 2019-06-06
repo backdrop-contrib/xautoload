@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload\Adapter;
+namespace Backdrop\xautoload\Adapter;
 
-use Drupal\xautoload\Discovery\ComposerDir;
-use Drupal\xautoload\Discovery\ComposerJson;
+use Backdrop\xautoload\Discovery\ComposerDir;
+use Backdrop\xautoload\Discovery\ComposerJson;
 
 /**
  * An instance of this class is passed around to implementations of

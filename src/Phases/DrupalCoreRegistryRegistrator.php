@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\xautoload\Phases;
+namespace Backdrop\xautoload\Phases;
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\ClassFinder\Plugin\DrupalCoreRegistryPlugin;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\Plugin\BackdropCoreRegistryPlugin;
 
-class DrupalCoreRegistryRegistrator implements PhaseObserverInterface {
+class BackdropCoreRegistryRegistrator implements PhaseObserverInterface {
 
   /**
    * Wake up after a cache fail.
@@ -16,7 +16,7 @@ class DrupalCoreRegistryRegistrator implements PhaseObserverInterface {
    *   Currently enabled extensions. Extension type by extension name.
    */
   public function wakeUp(ExtendedClassFinderInterface $finder, array $extensions) {
-    $plugin = new DrupalCoreRegistryPlugin(BACKDROP_ROOT . '/');
+    $plugin = new BackdropCoreRegistryPlugin(BACKDROP_ROOT . '/');
     $finder->getNamespaceMap()->registerDeepPath('', 'registry', $plugin);
     $finder->getPrefixMap()->registerDeepPath('', 'registry', $plugin);
   }

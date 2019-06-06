@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Example;
+namespace Backdrop\xautoload\Tests\Example;
 
 
-use Drupal\xautoload\Tests\DrupalBootTest\AbstractDrupalBootTest;
-use Drupal\xautoload\Tests\Filesystem\VirtualFilesystem;
+use Backdrop\xautoload\Tests\BackdropBootTest\AbstractBackdropBootTest;
+use Backdrop\xautoload\Tests\Filesystem\VirtualFilesystem;
 
 class ExampleModules extends AbstractExampleModules {
 
@@ -25,9 +25,9 @@ class ExampleModules extends AbstractExampleModules {
   public function getExampleClasses() {
     return array(
       'testmod_pearflat' => 'testmod_pearflat_Foo',
-      'testmod_psr0_lib' => 'Drupal\testmod_psr0_lib\Foo',
-      'testmod_psr4_custom' => 'Drupal\testmod_psr4_custom\Foo',
-      'testmod_psr4_src' => 'Drupal\testmod_psr4_src\Foo',
+      'testmod_psr0_lib' => 'Backdrop\testmod_psr0_lib\Foo',
+      'testmod_psr4_custom' => 'Backdrop\testmod_psr4_custom\Foo',
+      'testmod_psr4_src' => 'Backdrop\testmod_psr4_src\Foo',
     );
   }
 

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Phases;
+namespace Backdrop\xautoload\Phases;
 
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\ClassFinder\Plugin\DrupalExtensionNamespaceFinderPlugin;
-use Drupal\xautoload\ClassFinder\Plugin\DrupalExtensionUnderscoreFinderPlugin;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\Plugin\BackdropExtensionNamespaceFinderPlugin;
+use Backdrop\xautoload\ClassFinder\Plugin\BackdropExtensionUnderscoreFinderPlugin;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
 
 class ExtensionNamespaces implements PhaseObserverInterface {
 
@@ -29,14 +29,14 @@ class ExtensionNamespaces implements PhaseObserverInterface {
   private $registered = array();
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   private $system;
 
   /**
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    */
-  public function __construct(DrupalSystemInterface $system) {
+  public function __construct(BackdropSystemInterface $system) {
     $this->system = $system;
   }
 
@@ -92,7 +92,7 @@ class ExtensionNamespaces implements PhaseObserverInterface {
       }
       // Unregister the lazy plugins.
       $this->finder->getNamespaceMap()->unregisterDeepPath(
-        'Drupal/' . $name . '/',
+        'Backdrop/' . $name . '/',
         $name
       );
       $this->finder->getPrefixMap()->unregisterDeepPath(
@@ -179,11 +179,11 @@ class ExtensionNamespaces implements PhaseObserverInterface {
    */
   private function _registerExtension($name, $dir) {
     if (is_dir($lib = $dir . '/lib')) {
-      $this->finder->addPsr0('Drupal\\' . $name . '\\', $lib);
+      $this->finder->addPsr0('Backdrop\\' . $name . '\\', $lib);
       $this->finder->addPearFlat($name . '_', $lib);
     }
     if (is_dir($src = $dir . '/src')) {
-      $this->finder->addPsr4('Drupal\\' . $name . '\\', $src);
+      $this->finder->addPsr4('Backdrop\\' . $name . '\\', $src);
     }
 
     $this->registered[$name] = TRUE;
@@ -195,17 +195,17 @@ class ExtensionNamespaces implements PhaseObserverInterface {
    * @param string $subdir
    */
   private function _registerExtensionPsr4($name, $dir, $subdir) {
-    $this->finder->addPsr4('Drupal\\' . $name . '\\', $dir . '/' . $subdir);
+    $this->finder->addPsr4('Backdrop\\' . $name . '\\', $dir . '/' . $subdir);
 
     // Re-add the PSR-0 test directory, for consistency's sake.
-    if (is_dir($lib_tests = $dir . '/lib/Drupal/' . $name . '/Tests')) {
-      $this->finder->addPsr0('Drupal\\' . $name . '\\Tests\\', $lib_tests);
+    if (is_dir($lib_tests = $dir . '/lib/Backdrop/' . $name . '/Tests')) {
+      $this->finder->addPsr0('Backdrop\\' . $name . '\\Tests\\', $lib_tests);
     }
     $this->registered[$name] = 'psr-4';
   }
 
   /**
-   * Register lazy plugins for enabled Drupal modules and themes, assuming that
+   * Register lazy plugins for enabled Backdrop modules and themes, assuming that
    * we don't know yet whether they use PSR-0, PEAR-Flat, or none of these.
    *
    * @param string[] $extensions
@@ -217,12 +217,12 @@ class ExtensionNamespaces implements PhaseObserverInterface {
     $namespaceBehaviors = array();
     $prefixBehaviors = array();
     foreach (array('module', 'theme') as $extension_type) {
-      $namespaceBehaviors[$extension_type] = new DrupalExtensionNamespaceFinderPlugin(
+      $namespaceBehaviors[$extension_type] = new BackdropExtensionNamespaceFinderPlugin(
         $extension_type,
         $this->finder->getNamespaceMap(),
         $this->finder->getPrefixMap(),
         $this->system);
-      $prefixBehaviors[$extension_type] = new DrupalExtensionUnderscoreFinderPlugin(
+      $prefixBehaviors[$extension_type] = new BackdropExtensionUnderscoreFinderPlugin(
         $extension_type,
         $this->finder->getNamespaceMap(),
         $this->finder->getPrefixMap(),
@@ -234,7 +234,7 @@ class ExtensionNamespaces implements PhaseObserverInterface {
     foreach ($extensions as $name => $type) {
       if (empty($namespaceBehaviors[$type])) {
         // Unsupported extension type, e.g. "theme_engine".
-        // This can happen if a site was upgraded from Drupal 6.
+        // This can happen if a site was upgraded from Backdrop 6.
         // See https://drupal.org/comment/8503979#comment-8503979
         continue;
       }
@@ -242,7 +242,7 @@ class ExtensionNamespaces implements PhaseObserverInterface {
         // The extension has already been processed.
         continue;
       }
-      $namespace_map['Drupal/' . $name . '/'][$name] = $namespaceBehaviors[$type];
+      $namespace_map['Backdrop/' . $name . '/'][$name] = $namespaceBehaviors[$type];
       $prefix_map[str_replace('_', '/', $name) . '/'][$name] = $prefixBehaviors[$type];
       $this->registered[$name] = TRUE;
     }

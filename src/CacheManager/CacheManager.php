@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload\CacheManager;
+namespace Backdrop\xautoload\CacheManager;
 
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Util;
 
 class CacheManager {
 
@@ -13,7 +13,7 @@ class CacheManager {
   protected $prefix;
 
   /**
-   * @var \Drupal\xautoload\DrupalSystem\DrupalSystemInterface
+   * @var \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface
    */
   protected $system;
 
@@ -24,9 +24,9 @@ class CacheManager {
 
   /**
    * @param string $prefix
-   * @param \Drupal\xautoload\DrupalSystem\DrupalSystemInterface $system
+   * @param \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface $system
    */
-  protected function __construct($prefix, DrupalSystemInterface $system) {
+  protected function __construct($prefix, BackdropSystemInterface $system) {
     $this->prefix = $prefix;
     $this->system = $system;
   }
@@ -34,11 +34,11 @@ class CacheManager {
   /**
    * This method has side effects, so it is not the constructor.
    *
-   * @param \Drupal\xautoload\DrupalSystem\DrupalSystemInterface $system
+   * @param \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface $system
    *
    * @return CacheManager
    */
-  static function create(DrupalSystemInterface $system) {
+  static function create(BackdropSystemInterface $system) {
     $prefix = $system->variableGet(XAUTOLOAD_VARNAME_CACHE_PREFIX, NULL);
     $manager = new self($prefix, $system);
     if (empty($prefix)) {

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
-use Drupal\xautoload\Tests\Mock\MockDrupalSystem;
+use Backdrop\xautoload\Tests\Mock\MockBackdropSystem;
 
-class DrupalEnvironment {
+class BackdropEnvironment {
 
   /**
    * @var self
@@ -14,7 +14,7 @@ class DrupalEnvironment {
   private static $staticInstance;
 
   /**
-   * @var DrupalComponentContainer
+   * @var BackdropComponentContainer
    */
   private $components;
 
@@ -27,7 +27,7 @@ class DrupalEnvironment {
    * @param ExampleModulesInterface $exampleModules
    */
   function __construct(ExampleModulesInterface $exampleModules) {
-    $this->components = new DrupalComponentContainer($exampleModules);
+    $this->components = new BackdropComponentContainer($exampleModules);
     $this->exampleModules = $exampleModules;
   }
 
@@ -36,17 +36,17 @@ class DrupalEnvironment {
   }
 
   /**
-   * @return DrupalEnvironment
+   * @return BackdropEnvironment
    */
   static function getInstance() {
     return self::$staticInstance;
   }
 
   /**
-   * @return MockDrupalSystem
+   * @return MockBackdropSystem
    */
-  function getMockDrupalSystem() {
-    return $this->components->MockDrupalSystem;
+  function getMockBackdropSystem() {
+    return $this->components->MockBackdropSystem;
   }
 
   /**
@@ -64,7 +64,7 @@ class DrupalEnvironment {
   }
 
   /**
-   * Simulates Drupal's \module_enable()
+   * Simulates Backdrop's \module_enable()
    *
    * @param string[] $module_list
    *   Array of module names.
@@ -78,10 +78,10 @@ class DrupalEnvironment {
   }
 
   /**
-   * Replicates the Drupal bootstrap.
+   * Replicates the Backdrop bootstrap.
    */
   public function boot() {
-    $this->components->DrupalBoot->boot();
+    $this->components->BackdropBoot->boot();
   }
 
   /**

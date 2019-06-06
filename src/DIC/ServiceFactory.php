@@ -1,24 +1,24 @@
 <?php
 
-namespace Drupal\xautoload\DIC;
+namespace Backdrop\xautoload\DIC;
 
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
-use Drupal\xautoload\Adapter\DrupalExtensionAdapter;
-use Drupal\xautoload\ClassFinder\ClassFinder;
-use Drupal\xautoload\ClassFinder\ClassFinderInterface;
-use Drupal\xautoload\CacheManager\CacheManager;
-use Drupal\xautoload\ClassFinder\ProxyClassFinder;
-use Drupal\xautoload\Discovery\CachedClassMapGenerator;
-use Drupal\xautoload\Discovery\ClassMapGenerator;
-use Drupal\xautoload\DrupalSystem\DrupalSystem;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Libraries\LibrariesInfoAlter;
-use Drupal\xautoload\Phases\DrupalCoreRegistryRegistrator;
-use Drupal\xautoload\Phases\DrupalPhaseControl;
-use Drupal\xautoload\Phases\ExtensionNamespaces;
-use Drupal\xautoload\Phases\HookXautoload;
-use Drupal\xautoload\Libraries\LibrariesOnInit;
-use Drupal\xautoload\Main;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\Adapter\BackdropExtensionAdapter;
+use Backdrop\xautoload\ClassFinder\ClassFinder;
+use Backdrop\xautoload\ClassFinder\ClassFinderInterface;
+use Backdrop\xautoload\CacheManager\CacheManager;
+use Backdrop\xautoload\ClassFinder\ProxyClassFinder;
+use Backdrop\xautoload\Discovery\CachedClassMapGenerator;
+use Backdrop\xautoload\Discovery\ClassMapGenerator;
+use Backdrop\xautoload\BackdropSystem\BackdropSystem;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Libraries\LibrariesInfoAlter;
+use Backdrop\xautoload\Phases\BackdropCoreRegistryRegistrator;
+use Backdrop\xautoload\Phases\BackdropPhaseControl;
+use Backdrop\xautoload\Phases\ExtensionNamespaces;
+use Backdrop\xautoload\Phases\HookXautoload;
+use Backdrop\xautoload\Libraries\LibrariesOnInit;
+use Backdrop\xautoload\Main;
 
 /**
  * @see ServiceContainerInterface
@@ -65,10 +65,10 @@ class ServiceFactory {
   /**
    * @param ServiceContainer $services
    *
-   * @return DrupalExtensionAdapter
+   * @return BackdropExtensionAdapter
    */
   function extensionRegistrationService($services) {
-    return new DrupalExtensionAdapter($services->system, $services->finder);
+    return new BackdropExtensionAdapter($services->system, $services->finder);
   }
 
   /**
@@ -129,16 +129,16 @@ class ServiceFactory {
   /**
    * @param ServiceContainer $services
    *
-   * @return DrupalSystemInterface
+   * @return BackdropSystemInterface
    */
   function system($services) {
-    return new DrupalSystem();
+    return new BackdropSystem();
   }
 
   /**
    * @param ServiceContainer $services
    *
-   * @return DrupalPhaseControl
+   * @return BackdropPhaseControl
    */
   function phaseControl($services) {
     $observers = array(
@@ -147,9 +147,9 @@ class ServiceFactory {
       new LibrariesOnInit($services->system),
     );
     if ($services->system->variableGet(XAUTOLOAD_VARNAME_REPLACE_CORE, FALSE)) {
-      $observers[] = new DrupalCoreRegistryRegistrator();
+      $observers[] = new BackdropCoreRegistryRegistrator();
     }
-    return new DrupalPhaseControl($services->system, $observers);
+    return new BackdropPhaseControl($services->system, $observers);
   }
 
   /**

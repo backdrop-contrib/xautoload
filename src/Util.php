@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload;
+namespace Backdrop\xautoload;
 
 /**
  * A number of static methods that don't interact with any global state.

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
-class DrupalStatic {
+class BackdropStatic {
 
   /**
    * @var array

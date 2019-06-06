@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload\Discovery\WildcardFileFinder;
+use Backdrop\xautoload\Discovery\WildcardFileFinder;
 
 /**
  * Implements hook_modules_enabled()
@@ -36,6 +36,6 @@ function xautoload_modules_enabled($modules) {
  */
 function xautoload_registry_files_alter(&$files) {
   $file_finder = new WildcardFileFinder();
-  $file_finder->addDrupalPaths($files);
-  $files = $file_finder->getDrupalFiles();
+  $file_finder->addBackdropPaths($files);
+  $files = $file_finder->getBackdropFiles();
 }

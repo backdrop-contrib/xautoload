@@ -1,11 +1,11 @@
 <?php
 
-use Drupal\xautoload\ClassFinder\ClassFinderInterface;
-use Drupal\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
-use Drupal\xautoload\ClassFinder\InjectedApi\LoadClassInjectedAPI;
-use Drupal\xautoload\DIC\ServiceContainer;
-use Drupal\xautoload\DIC\ServiceFactory;
-use Drupal\xautoload\Main;
+use Backdrop\xautoload\ClassFinder\ClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\LoadClassGetFileInjectedApi;
+use Backdrop\xautoload\ClassFinder\InjectedApi\LoadClassInjectedAPI;
+use Backdrop\xautoload\DIC\ServiceContainer;
+use Backdrop\xautoload\DIC\ServiceFactory;
+use Backdrop\xautoload\Main;
 
 define('XAUTOLOAD_LIB_DIR', __DIR__ . '/lib');
 define('XAUTOLOAD_SRC_DIR', __DIR__ . '/src');
@@ -66,9 +66,9 @@ function xautoload($key = 'main') {
 /**
  * Creates and registers the xautoload class loader.
  *
- * Registers the xautoload_ prefix and the Drupal\xautoload\\ namespace, but
- * does not register any other Drupal-specific stuff yet. This is because this
- * might be called from settings.php, while some parts of Drupal are not fully
+ * Registers the xautoload_ prefix and the Backdrop\xautoload\\ namespace, but
+ * does not register any other Backdrop-specific stuff yet. This is because this
+ * might be called from settings.php, while some parts of Backdrop are not fully
  * initialized yet.
  */
 function _xautoload_register() {
@@ -86,13 +86,13 @@ function _xautoload_register() {
   // Some classes need to be loaded manually. Believe it!
   LoadClassInjectedAPI::forceAutoload();
   LoadClassGetFileInjectedApi::forceAutoload();
-  \Drupal\xautoload\Util::forceAutoload();
+  \Backdrop\xautoload\Util::forceAutoload();
 
   $finder = xautoload()->finder;
   $finder->register();
 
-  // Register the 'Drupal\xautoload\\' namespace.
-  $finder->addPsr4('Drupal\xautoload\\', XAUTOLOAD_SRC_DIR . '/');
+  // Register the 'Backdrop\xautoload\\' namespace.
+  $finder->addPsr4('Backdrop\xautoload\\', XAUTOLOAD_SRC_DIR . '/');
 
   // Register the "xautoload_" prefix for legacy classes.
   $finder->addPearFlat('xautoload_', __DIR__ . '/legacy/lib/');
@@ -112,7 +112,7 @@ function _xautoload_register() {
  */
 function _xautoload_autoload_temp($name) {
 
-  if ('Drupal\xautoload\\' === substr($name, 0, 17)) {
+  if ('Backdrop\xautoload\\' === substr($name, 0, 17)) {
     // PSR-4 case
     $file = XAUTOLOAD_SRC_DIR . '/' . str_replace('\\', '/', substr($name, 17)) . '.php';
     require_once $file;

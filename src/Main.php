@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload;
+namespace Backdrop\xautoload;
 
-use Drupal\xautoload\DIC\ServiceContainer;
-use Drupal\xautoload\DIC\ServiceContainerInterface;
+use Backdrop\xautoload\DIC\ServiceContainer;
+use Backdrop\xautoload\DIC\ServiceContainerInterface;
 
 class Main implements ServiceContainerInterface {
 
@@ -43,7 +43,7 @@ class Main implements ServiceContainerInterface {
    *
    * The method will register all autoloading schemes for this module that are
    * supported by default:
-   * - PSR-0: "Drupal\\$module\\Foo" => "$module_dir/lib/Drupal/$module/Foo.php"
+   * - PSR-0: "Backdrop\\$module\\Foo" => "$module_dir/lib/Backdrop/$module/Foo.php"
    * - PEAR-FLAT: $module . "_Foo_Bar" => "$module_dir/lib/Foo/Bar.php"
    *
    * It will not register anything for PSR-4, since it is not clear whether this
@@ -66,22 +66,22 @@ class Main implements ServiceContainerInterface {
   /**
    * Register a module as PSR-4, in early bootstrap or from modulename.install
    *
-   * This can be used while Drupal 8 is still undecided whether PSR-4 class
+   * This can be used while Backdrop 8 is still undecided whether PSR-4 class
    * files should live in "lib" or in "src" by default.
    *
    * Suggested usage: (in your $modulename.module, or $modulename.install):
    *
-   *     // E.g. "Drupal\\$module\\Foo" => "$module_dir/lib/Foo.php"
+   *     // E.g. "Backdrop\\$module\\Foo" => "$module_dir/lib/Foo.php"
    *     xautoload()->registerModulePsr4(__FILE__, 'lib');
    *
    * or
    *
-   *     // E.g. "Drupal\\$module\\Foo" => "$module_dir/src/Foo.php"
+   *     // E.g. "Backdrop\\$module\\Foo" => "$module_dir/src/Foo.php"
    *     xautoload()->registerModulePsr4(__FILE__, 'src');
    *
    * or
    *
-   *     // E.g. "Drupal\\$module\\Foo" => "$module_dir/psr4/Foo.php"
+   *     // E.g. "Backdrop\\$module\\Foo" => "$module_dir/psr4/Foo.php"
    *     xautoload()->registerModulePsr4(__FILE__, 'psr4');
    *
    * @param string $__FILE__

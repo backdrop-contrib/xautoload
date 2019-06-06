@@ -1,21 +1,21 @@
 <?php
 
-namespace Drupal\xautoload\Adapter;
+namespace Backdrop\xautoload\Adapter;
 
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\ClassFinder\Plugin\DrupalExtensionNamespaceFinderPlugin;
-use Drupal\xautoload\ClassFinder\Plugin\DrupalExtensionUnderscoreFinderPlugin;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\Plugin\BackdropExtensionNamespaceFinderPlugin;
+use Backdrop\xautoload\ClassFinder\Plugin\BackdropExtensionUnderscoreFinderPlugin;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
 
 /**
  * Service that knows how to register module namespaces and prefixes into the
  * class loader, and that remembers which modules have already been registered.
  */
-class DrupalExtensionAdapter {
+class BackdropExtensionAdapter {
 
   /**
-   * @var \Drupal\xautoload\DrupalSystem\DrupalSystemInterface
+   * @var \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface
    */
   protected $system;
 
@@ -27,28 +27,28 @@ class DrupalExtensionAdapter {
   /**
    * One finder plugin for each extension type ('module', 'theme').
    *
-   * @var DrupalExtensionNamespaceFinderPlugin[]
+   * @var BackdropExtensionNamespaceFinderPlugin[]
    */
   protected $namespaceBehaviors = array();
 
   /**
    * One finder plugin for each extension type ('module', 'theme').
    *
-   * @var DrupalExtensionUnderscoreFinderPlugin[]
+   * @var BackdropExtensionUnderscoreFinderPlugin[]
    */
   protected $prefixBehaviors = array();
 
   /**
    * The namespace map used in the class loader.
    *
-   * @var \Drupal\xautoload\ClassFinder\GenericPrefixMap
+   * @var \Backdrop\xautoload\ClassFinder\GenericPrefixMap
    */
   protected $namespaceMap;
 
   /**
    * The prefix map used in the class loader.
    *
-   * @var \Drupal\xautoload\ClassFinder\GenericPrefixMap
+   * @var \Backdrop\xautoload\ClassFinder\GenericPrefixMap
    */
   protected $prefixMap;
 
@@ -67,21 +67,21 @@ class DrupalExtensionAdapter {
   protected $defaultBehavior;
 
   /**
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    * @param ExtendedClassFinderInterface $finder
    */
-  function __construct(DrupalSystemInterface $system, ExtendedClassFinderInterface $finder) {
+  function __construct(BackdropSystemInterface $system, ExtendedClassFinderInterface $finder) {
     $this->system = $system;
     $this->finder = $finder;
     $this->namespaceMap = $finder->getNamespaceMap();
     $this->prefixMap = $finder->getPrefixMap();
     foreach (array('module', 'theme') as $extension_type) {
-      $this->namespaceBehaviors[$extension_type] = new DrupalExtensionNamespaceFinderPlugin(
+      $this->namespaceBehaviors[$extension_type] = new BackdropExtensionNamespaceFinderPlugin(
         $extension_type,
         $this->namespaceMap,
         $this->prefixMap,
         $this->system);
-      $this->prefixBehaviors[$extension_type] = new DrupalExtensionUnderscoreFinderPlugin(
+      $this->prefixBehaviors[$extension_type] = new BackdropExtensionUnderscoreFinderPlugin(
         $extension_type,
         $this->namespaceMap,
         $this->prefixMap,
@@ -91,7 +91,7 @@ class DrupalExtensionAdapter {
   }
 
   /**
-   * Register lazy plugins for enabled Drupal modules and themes, assuming that
+   * Register lazy plugins for enabled Backdrop modules and themes, assuming that
    * we don't know yet whether they use PSR-0, PEAR-Flat, or none of these.
    *
    * @param string[] $extensions
@@ -105,7 +105,7 @@ class DrupalExtensionAdapter {
     foreach ($extensions as $name => $type) {
       if (empty($this->namespaceBehaviors[$type])) {
         // Unsupported extension type, e.g. "theme_engine".
-        // This can happen if a site was upgraded from Drupal 6.
+        // This can happen if a site was upgraded from Backdrop 6.
         // See https://drupal.org/comment/8503979#comment-8503979
         continue;
       }
@@ -113,7 +113,7 @@ class DrupalExtensionAdapter {
         // The extension has already been processed.
         continue;
       }
-      $namespace_map['Drupal/' . $name . '/'][$name] = $this->namespaceBehaviors[$type];
+      $namespace_map['Backdrop/' . $name . '/'][$name] = $this->namespaceBehaviors[$type];
       $prefix_map[str_replace('_', '/', $name) . '/'][$name] = $this->prefixBehaviors[$type];
       $this->registered[$name] = TRUE;
     }
@@ -133,7 +133,7 @@ class DrupalExtensionAdapter {
       // The extension has already been processed.
       return;
     }
-    $this->namespaceMap->registerDeepPath('Drupal/' . $name . '/', $name, $this->namespaceBehaviors[$type]);
+    $this->namespaceMap->registerDeepPath('Backdrop/' . $name . '/', $name, $this->namespaceBehaviors[$type]);
     $this->prefixMap->registerDeepPath(str_replace('_', '/', $name) . '/', $name, $this->prefixBehaviors[$type]);
     $this->registered[$name] = TRUE;
   }
@@ -157,18 +157,18 @@ class DrupalExtensionAdapter {
         return;
       }
       // Unregister the lazy plugins.
-      $this->namespaceMap->unregisterDeepPath('Drupal/' . $name . '/', $name);
+      $this->namespaceMap->unregisterDeepPath('Backdrop/' . $name . '/', $name);
       $this->prefixMap->unregisterDeepPath(str_replace('_', '/', $name) . '/', $name);
     }
 
     $dir = strlen($subdir)
       ? $extension_dir . '/' . trim($subdir, '/') . '/'
       : $extension_dir . '/';
-    $this->namespaceMap->registerDeepPath('Drupal/' . $name . '/', $dir, $this->defaultBehavior);
+    $this->namespaceMap->registerDeepPath('Backdrop/' . $name . '/', $dir, $this->defaultBehavior);
 
     // Re-add the PSR-0 test directory, for consistency's sake.
-    if (is_dir($psr0_tests_dir = $extension_dir . '/lib/Drupal/' . $name . '/Tests')) {
-      $this->namespaceMap->registerDeepPath('Drupal/' . $name . '/Tests/', $psr0_tests_dir, $this->defaultBehavior);
+    if (is_dir($psr0_tests_dir = $extension_dir . '/lib/Backdrop/' . $name . '/Tests')) {
+      $this->namespaceMap->registerDeepPath('Backdrop/' . $name . '/Tests/', $psr0_tests_dir, $this->defaultBehavior);
     }
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\ClassLoader;
+namespace Backdrop\xautoload\ClassLoader;
 
 /**
  * Behaves mostly like the Symfony ClassLoader classes.

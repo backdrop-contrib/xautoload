@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload\Tests\EnvironmentSnapshotMaker;
+use Backdrop\xautoload\Tests\EnvironmentSnapshotMaker;
 
 xautoload()->registerModule(__FILE__);
 

@@ -1,7 +1,7 @@
 <?php
 
-use Drupal\testmod_psr4_custom\Foo;
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\testmod_psr4_custom\Foo;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 xautoload()->main->registerModulePsr4(__FILE__, 'psr4');
 

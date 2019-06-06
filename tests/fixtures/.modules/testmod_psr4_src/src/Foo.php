@@ -1,5 +1,5 @@
 <?php
 
-namespace Drupal\testmod_psr4_src;
+namespace Backdrop\testmod_psr4_src;
 
 class Foo {}

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Libraries;
+namespace Backdrop\xautoload\Libraries;
 
 /**
  * A wrapper that allows serialization of closures from hook_libraries_info().
@@ -45,7 +45,7 @@ class SerializableClosureWrapper {
   }
 
   /**
-   * @param \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
+   * @param \Backdrop\xautoload\Adapter\LocalDirectoryAdapter $adapter
    */
   public function __invoke($adapter) {
     $closure = $this->lazyGetClosure();

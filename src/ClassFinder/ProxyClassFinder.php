@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
-use Drupal\xautoload\ClassLoader\AbstractClassLoader;
-use Drupal\xautoload\CacheMissObserver\CacheMissObserverInterface;
+use Backdrop\xautoload\ClassLoader\AbstractClassLoader;
+use Backdrop\xautoload\CacheMissObserver\CacheMissObserverInterface;
 
 /**
  * A placeholder class finder. Used to postpone expensive operations until they
@@ -31,7 +31,7 @@ class ProxyClassFinder extends AbstractClassLoader implements ClassFinderInterfa
   /**
    * @param ExtendedClassFinderInterface $finder
    *
-   * @internal param \Drupal\xautoload\Adapter\DrupalExtensionAdapter $helper
+   * @internal param \Backdrop\xautoload\Adapter\BackdropExtensionAdapter $helper
    */
   function __construct($finder) {
     $this->finder = $finder;

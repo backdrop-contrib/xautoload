@@ -1,16 +1,16 @@
 <?php
 
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
-use Drupal\xautoload\ClassLoader\ClassLoaderInterface;
+use Backdrop\xautoload\ClassLoader\ClassLoaderInterface;
 
 interface ClassFinderInterface extends ClassLoaderInterface {
 
   /**
    * Finds the path to the file where the class is defined.
    *
-   * @param \Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface $api
+   * @param \Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface $api
    *   API object with a suggestFile() method.
    *   We are supposed to call $api->suggestFile($file) with all suggestions we
    *   can find, until it returns TRUE. Once suggestFile() returns TRUE, we stop

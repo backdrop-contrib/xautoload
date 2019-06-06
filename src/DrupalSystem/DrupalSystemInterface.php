@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\DrupalSystem;
+namespace Backdrop\xautoload\BackdropSystem;
 
-interface DrupalSystemInterface {
+interface BackdropSystemInterface {
 
   /**
    * Wrapper for variable_set()

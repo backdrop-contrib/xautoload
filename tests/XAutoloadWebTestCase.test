@@ -1,6 +1,6 @@
 <?php
 
-//namespace Drupal\xautoload\Tests;
+//namespace Backdrop\xautoload\Tests;
 
 class XAutoloadWebTestCase extends \BackdropWebTestCase {
 
@@ -62,9 +62,9 @@ class XAutoloadWebTestCase extends \BackdropWebTestCase {
     menu_rebuild();
 
     foreach (array(
-      'xautoload_test_1' => array('Drupal\xautoload_test_1\ExampleClass'),
+      'xautoload_test_1' => array('Backdrop\xautoload_test_1\ExampleClass'),
       'xautoload_test_2' => array('xautoload_test_2_ExampleClass'),
-      'xautoload_test_3' => array('Drupal\xautoload_test_3\ExampleClass'),
+      'xautoload_test_3' => array('Backdrop\xautoload_test_3\ExampleClass'),
     ) as $module => $classes) {
       $classes_on_include = in_array($module, array('xautoload_test_2', 'xautoload_test_3'));
       $this->xautoloadModuleEnabled($module, $classes, $classes_on_include);
@@ -79,9 +79,9 @@ class XAutoloadWebTestCase extends \BackdropWebTestCase {
    */
   protected function xautoloadModuleEnabled($module, $classes, $classes_on_include) {
 
-    Drupal\xautoload\Tests\EnvironmentSnapshotMaker::takeSnapshot($module, 'later', $classes);
+    Backdrop\xautoload\Tests\EnvironmentSnapshotMaker::takeSnapshot($module, 'later', $classes);
 
-    $all = Drupal\xautoload\Tests\EnvironmentSnapshotMaker::getSnapshots($module);
+    $all = Backdrop\xautoload\Tests\EnvironmentSnapshotMaker::getSnapshots($module);
 
     foreach ($all as $phase => $observations) {
       $when = ($phase === 'early')
@@ -181,16 +181,16 @@ class XAutoloadWebTestCase extends \BackdropWebTestCase {
   protected function expectedAutoloadStackOrder($cache_types) {
 
     if (!empty($cache_types['apc']) && extension_loaded('apc') && function_exists('apc_store')) {
-      $loader = 'Drupal\xautoload\ClassLoader\ApcClassLoader->loadClass()';
+      $loader = 'Backdrop\xautoload\ClassLoader\ApcClassLoader->loadClass()';
     }
     elseif (!empty($cache_types['wincache']) && extension_loaded('wincache') && function_exists('wincache_ucache_get')) {
-      $loader = 'Drupal\xautoload\ClassLoader\WinCacheClassLoader->loadClass()';
+      $loader = 'Backdrop\xautoload\ClassLoader\WinCacheClassLoader->loadClass()';
     }
     elseif (!empty($cache_types['xcache']) && extension_loaded('Xcache') && function_exists('xcache_get')) {
-      $loader = 'Drupal\xautoload\ClassLoader\XCacheClassLoader->loadClass()';
+      $loader = 'Backdrop\xautoload\ClassLoader\XCacheClassLoader->loadClass()';
     }
     else {
-      $loader = 'Drupal\xautoload\ClassFinder\ClassFinder->loadClass()';
+      $loader = 'Backdrop\xautoload\ClassFinder\ClassFinder->loadClass()';
     }
 
     return array(

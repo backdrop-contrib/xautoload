@@ -50,7 +50,7 @@ function _MYMODULE_autoload($class) {
 
   if (FALSE !== $nspos = strrpos($class, '\\')) {
     // PSR-0 mode. Omit this if you use only the PHP 5.2 compatibility mode.
-    if ("Drupal\\$module\\" === substr($class, 0, $l + 8)) {
+    if ("Backdrop\\$module\\" === substr($class, 0, $l + 8)) {
       $namespace = substr($class, 0, $nspos);
       $classname = substr($class, $nspos + 1);
       $path = $lib_dir . str_replace('\\', '/', $namespace) . '/' . str_replace('_', '/', $classname) . '.php';

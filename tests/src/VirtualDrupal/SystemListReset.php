@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class SystemListReset {
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
@@ -18,9 +18,9 @@ class SystemListReset {
 
   /**
    * @param Cache $cache
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    */
-  function __construct(Cache $cache, DrupalStatic $backdropStatic) {
+  function __construct(Cache $cache, BackdropStatic $backdropStatic) {
     $this->cache = $cache;
     $this->backdropStatic = $backdropStatic;
   }

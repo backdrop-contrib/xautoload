@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
 class CachedClassMapGenerator implements ClassMapGeneratorInterface {
 
@@ -11,13 +11,13 @@ class CachedClassMapGenerator implements ClassMapGeneratorInterface {
   protected $decorated;
 
   /**
-   * @var \Drupal\xautoload\DrupalSystem\DrupalSystemInterface
+   * @var \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface
    */
   protected $system;
 
   /**
    * @param ClassMapGeneratorInterface $decorated
-   * @param \Drupal\xautoload\DrupalSystem\DrupalSystemInterface $system
+   * @param \Backdrop\xautoload\BackdropSystem\BackdropSystemInterface $system
    */
   function __construct($decorated, $system) {
     $this->decorated = $decorated;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
-use Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
+use Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
 
 /**
  * Class finder interface with additional registration methods.
@@ -123,7 +123,7 @@ interface ExtendedClassFinderInterface extends ClassFinderInterface, CommonRegis
    *   Associative array, the keys are the prefixes, the values are the
    *   directories.
    *   This does NOT cover the class named $prefix itself.
-   * @param \Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
+   * @param \Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
    *   If TRUE, then we are not sure if the directory at $path actually exists.
    *   If during the process we find the directory to be nonexistent, we
    *   unregister the path.
@@ -157,7 +157,7 @@ interface ExtendedClassFinderInterface extends ClassFinderInterface, CommonRegis
    * @param string $root_path
    *   The deep path, e.g. "../lib", if classes reside in e.g.
    *   My\Namespace\SomeClass -> ../lib/My/Namespace/SomeClass.php
-   * @param \Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
+   * @param \Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
    *   If TRUE, then we are not sure if the directory at $path actually exists.
    *   If during the process we find the directory to be nonexistent, we
    *   unregister the path.
@@ -170,7 +170,7 @@ interface ExtendedClassFinderInterface extends ClassFinderInterface, CommonRegis
    * @param string[] $map
    *   Associative array, the keys are the namespaces, the values are the
    *   directories.
-   * @param \Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
+   * @param \Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
    *   If TRUE, then we are not sure if the directory at $path actually exists.
    *   If during the process we find the directory to be nonexistent, we
    *   unregister the path.
@@ -184,7 +184,7 @@ interface ExtendedClassFinderInterface extends ClassFinderInterface, CommonRegis
    *   The namespace, e.g. "My\Namespace"
    * @param string $path
    *   The deep path, e.g. "../lib/My/Namespace"
-   * @param \Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
+   * @param \Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface $behavior
    *   If TRUE, then we are not sure if the directory at $path actually exists.
    *   If during the process we find the directory to be nonexistent, we
    *   unregister the path.

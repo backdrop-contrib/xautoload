@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\xautoload_test_5\FooNamespace\Foo_Class;
+use Backdrop\xautoload_test_5\FooNamespace\Foo_Class;
 
 /**
  * Implements hook_boot()

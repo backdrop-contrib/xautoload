@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder\Plugin;
+namespace Backdrop\xautoload\ClassFinder\Plugin;
 
-use Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
 use xautoload_FinderPlugin_Interface;
 
 

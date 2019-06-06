@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 
@@ -13,7 +13,7 @@ class SystemList {
   private $cache;
 
   /**
-   * @var DrupalGetFilename
+   * @var BackdropGetFilename
    */
   private $backdropGetFilename;
 
@@ -23,17 +23,17 @@ class SystemList {
   private $systemListLoader;
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
   /**
    * @param Cache $cache
    * @param SystemTable $systemTable
-   * @param DrupalGetFilename $backdropGetFilename
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropGetFilename $backdropGetFilename
+   * @param BackdropStatic $backdropStatic
    */
-  function __construct(Cache $cache, SystemTable $systemTable, DrupalGetFilename $backdropGetFilename, DrupalStatic $backdropStatic) {
+  function __construct(Cache $cache, SystemTable $systemTable, BackdropGetFilename $backdropGetFilename, BackdropStatic $backdropStatic) {
     $this->cache = $cache;
     $this->backdropGetFilename = $backdropGetFilename;
     $this->systemListLoader = new SystemListLoader($systemTable);

@@ -1,7 +1,7 @@
 <?php
 
-use Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
-use Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
+use Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
 
 /**
  * X Autoload plugins are for:

@@ -1,32 +1,32 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
-use Drupal\xautoload\Tests\Mock\MockDrupalSystem;
+use Backdrop\xautoload\Tests\Mock\MockBackdropSystem;
 
 /**
  *
  * @property ModuleEnable ModuleEnable
- * @property DrupalGetFilename DrupalGetFilename
+ * @property BackdropGetFilename BackdropGetFilename
  * @property SystemUpdateBootstrapStatus SystemUpdateBootstrapStatus
  * @property SystemRebuildModuleData SystemRebuildModuleData
  * @property SystemListReset SystemListReset
  * @property SystemTable SystemTable
  * @property ModuleList ModuleList
  * @property HookSystem HookSystem
- * @property DrupalStatic DrupalStatic
+ * @property BackdropStatic BackdropStatic
  * @property SystemList SystemList
  * @property Cache Cache
  * @property ModuleBuildDependencies ModuleBuildDependencies
  * @property SystemBuildModuleData SystemBuildModuleData
  * @property LibrariesInfo LibrariesInfo
  * @property LibrariesLoad LibrariesLoad
- * @property DrupalBootstrap DrupalBoot
- * @property DrupalLoad DrupalLoad
- * @property MockDrupalSystem MockDrupalSystem
+ * @property BackdropBootstrap BackdropBoot
+ * @property BackdropLoad BackdropLoad
+ * @property MockBackdropSystem MockBackdropSystem
  */
-class DrupalComponentContainer {
+class BackdropComponentContainer {
 
   /**
    * @var object[]
@@ -46,7 +46,7 @@ class DrupalComponentContainer {
   }
 
   /**
-   * Magic getter for a Drupal component.
+   * Magic getter for a Backdrop component.
    *
    * @param string $key
    *
@@ -60,7 +60,7 @@ class DrupalComponentContainer {
     }
     $method = 'get' . $key;
     if (!method_exists($this, $method)) {
-      throw new \Exception("Unsupported key '$key' for DrupalComponentContainer.");
+      throw new \Exception("Unsupported key '$key' for BackdropComponentContainer.");
     }
     return $this->components[$key] = $this->$method($this);
   }
@@ -68,7 +68,7 @@ class DrupalComponentContainer {
   /**
    * @return SystemTable
    *
-   * @see DrupalComponentContainer::SystemTable
+   * @see BackdropComponentContainer::SystemTable
    */
   protected function getSystemTable() {
     return new SystemTable();
@@ -77,38 +77,38 @@ class DrupalComponentContainer {
   /**
    * @return Cache
    *
-   * @see DrupalComponentContainer::Cache
+   * @see BackdropComponentContainer::Cache
    */
   protected function getCache() {
     return new Cache();
   }
 
   /**
-   * @return DrupalStatic
+   * @return BackdropStatic
    *
-   * @see DrupalComponentContainer::DrupalStatic
+   * @see BackdropComponentContainer::BackdropStatic
    */
-  protected function getDrupalStatic() {
-    return new DrupalStatic();
+  protected function getBackdropStatic() {
+    return new BackdropStatic();
   }
 
   /**
-   * @return DrupalGetFilename
+   * @return BackdropGetFilename
    *
-   * @see DrupalComponentContainer::DrupalGetFilename
+   * @see BackdropComponentContainer::BackdropGetFilename
    */
-  protected function getDrupalGetFilename() {
-    return new DrupalGetFilename($this->SystemTable, $this->exampleModules);
+  protected function getBackdropGetFilename() {
+    return new BackdropGetFilename($this->SystemTable, $this->exampleModules);
   }
 
   /**
    * @return HookSystem
    *
-   * @see DrupalComponentContainer::HookSystem
+   * @see BackdropComponentContainer::HookSystem
    */
   protected function getHookSystem() {
     return new HookSystem(
-      $this->DrupalStatic,
+      $this->BackdropStatic,
       $this->Cache,
       $this->ModuleList);
   }
@@ -116,11 +116,11 @@ class DrupalComponentContainer {
   /**
    * @return ModuleEnable
    *
-   * @see DrupalComponentContainer::ModuleEnable
+   * @see BackdropComponentContainer::ModuleEnable
    */
   protected function getModuleEnable() {
     return new ModuleEnable(
-      $this->DrupalGetFilename,
+      $this->BackdropGetFilename,
       $this->HookSystem,
       $this->ModuleList,
       $this->SystemTable,
@@ -132,30 +132,30 @@ class DrupalComponentContainer {
   /**
    * @return ModuleList
    *
-   * @see DrupalComponentContainer::ModuleList
+   * @see BackdropComponentContainer::ModuleList
    */
   protected function getModuleList() {
     return new ModuleList(
-      $this->DrupalGetFilename,
+      $this->BackdropGetFilename,
       $this->SystemList,
-      $this->DrupalStatic);
+      $this->BackdropStatic);
   }
 
   /**
    * @return SystemListReset
    *
-   * @see DrupalComponentContainer::SystemListReset
+   * @see BackdropComponentContainer::SystemListReset
    */
   protected function getSystemListReset() {
     return new SystemListReset(
       $this->Cache,
-      $this->DrupalStatic);
+      $this->BackdropStatic);
   }
 
   /**
    * @return ModuleBuildDependencies
    *
-   * @see DrupalComponentContainer::ModuleBuildDependencies
+   * @see BackdropComponentContainer::ModuleBuildDependencies
    */
   protected function getModuleBuildDependencies() {
     return new ModuleBuildDependencies();
@@ -164,7 +164,7 @@ class DrupalComponentContainer {
   /**
    * @return SystemBuildModuleData
    *
-   * @see DrupalComponentContainer::SystemBuildModuleData
+   * @see BackdropComponentContainer::SystemBuildModuleData
    */
   protected function getSystemBuildModuleData() {
     return new SystemBuildModuleData(
@@ -175,11 +175,11 @@ class DrupalComponentContainer {
   /**
    * @return SystemRebuildModuleData
    *
-   * @see DrupalComponentContainer::SystemRebuildModuleData
+   * @see BackdropComponentContainer::SystemRebuildModuleData
    */
   protected function getSystemRebuildModuleData() {
     return new SystemRebuildModuleData(
-      $this->DrupalStatic,
+      $this->BackdropStatic,
       $this->ModuleBuildDependencies,
       $this->SystemTable,
       $this->SystemBuildModuleData,
@@ -189,7 +189,7 @@ class DrupalComponentContainer {
   /**
    * @return SystemUpdateBootstrapStatus
    *
-   * @see DrupalComponentContainer::SystemUpdateBootstrapStatus
+   * @see BackdropComponentContainer::SystemUpdateBootstrapStatus
    */
   protected function getSystemUpdateBootstrapStatus() {
     return new SystemUpdateBootstrapStatus(
@@ -201,68 +201,68 @@ class DrupalComponentContainer {
   /**
    * @return SystemList
    *
-   * @see DrupalComponentContainer::SystemList
+   * @see BackdropComponentContainer::SystemList
    */
   protected function getSystemList() {
     return new SystemList(
       $this->Cache,
       $this->SystemTable,
-      $this->DrupalGetFilename,
-      $this->DrupalStatic);
+      $this->BackdropGetFilename,
+      $this->BackdropStatic);
   }
 
   /**
    * @return LibrariesInfo
    *
-   * @see DrupalComponentContainer::LibrariesInfo
+   * @see BackdropComponentContainer::LibrariesInfo
    */
   protected function getLibrariesInfo() {
     return new LibrariesInfo(
-      $this->DrupalStatic,
+      $this->BackdropStatic,
       $this->HookSystem);
   }
 
   /**
    * @return LibrariesLoad
    *
-   * @see DrupalComponentContainer::LibrariesLoad
+   * @see BackdropComponentContainer::LibrariesLoad
    */
   protected function getLibrariesLoad() {
     return new LibrariesLoad(
-      $this->DrupalStatic,
+      $this->BackdropStatic,
       $this->Cache,
       $this->LibrariesInfo);
   }
 
   /**
-   * @return DrupalBootstrap
+   * @return BackdropBootstrap
    *
-   * @see DrupalComponentContainer::DrupalBoot
+   * @see BackdropComponentContainer::BackdropBoot
    */
-  protected function getDrupalBoot() {
-    return new DrupalBootstrap(
-      $this->DrupalLoad,
+  protected function getBackdropBoot() {
+    return new BackdropBootstrap(
+      $this->BackdropLoad,
       $this->HookSystem,
       $this->ModuleList);
   }
 
   /**
-   * @return MockDrupalSystem
+   * @return MockBackdropSystem
    *
-   * @see DrupalComponentContainer::MockDrupalSystem
+   * @see BackdropComponentContainer::MockBackdropSystem
    */
-  protected function getMockDrupalSystem() {
-    return new MockDrupalSystem($this);
+  protected function getMockBackdropSystem() {
+    return new MockBackdropSystem($this);
   }
 
   /**
-   * @return DrupalLoad
+   * @return BackdropLoad
    *
-   * @see DrupalComponentContainer::DrupalLoad
+   * @see BackdropComponentContainer::BackdropLoad
    */
-  protected function getDrupalLoad() {
-    return new DrupalLoad(
-      $this->DrupalGetFilename);
+  protected function getBackdropLoad() {
+    return new BackdropLoad(
+      $this->BackdropGetFilename);
   }
 
 } 

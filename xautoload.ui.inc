@@ -82,7 +82,7 @@ function xautoload_form_system_performance_settings_alter(&$form) {
     '#type' => 'checkbox',
     '#title' => t('Replace core class loader.'),
     '#default_value' => config_get('xautoload.settings', XAUTOLOAD_VARNAME_REPLACE_CORE),
-    '#description' => t('Lets xautoload replace Drupal\'s backdrop_autoload_class() and backdrop_autoload_interface().')
+    '#description' => t('Lets xautoload replace Backdrop\'s backdrop_autoload_class() and backdrop_autoload_interface().')
       . '<br/>' . t('Improves performance, if at least one of the cache options is active and enabled.')
       . '<br/>' . t('This features is quite new. Please report any problems in the xautoload issue queue on backdrop.org.'),
   );

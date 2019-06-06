@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Filesystem;
+namespace Backdrop\xautoload\Tests\Filesystem;
 
 
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\Util;
 
 class VirtualFilesystem {
 
@@ -226,7 +226,7 @@ class VirtualFilesystem {
       // Empty PHP file..
       return <<<EOT
 <?php
-Drupal\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
+Backdrop\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
 
 EOT;
     }
@@ -236,7 +236,7 @@ EOT;
       $php = substr($this->knownPaths[$path], 5);
       return <<<EOT
 <?php
-Drupal\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
+Backdrop\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
 $php
 EOT;
     }
@@ -253,7 +253,7 @@ EOT;
       // Class without namespace.
       return <<<EOT
 <?php
-Drupal\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
+Backdrop\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
 class $class {}
 
 EOT;
@@ -265,7 +265,7 @@ EOT;
     return <<<EOT
 <?php
 namespace $namespace;
-\\Drupal\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
+\\Backdrop\\xautoload\\Tests\\Filesystem\\VirtualFilesystem::reportFileIncluded($instance_key_export, $path_export);
 class $classname {}
 
 EOT;

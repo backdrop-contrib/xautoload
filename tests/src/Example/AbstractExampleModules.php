@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Example;
+namespace Backdrop\xautoload\Tests\Example;
 
 
-use Drupal\xautoload\Tests\DrupalBootTest\AbstractDrupalBootTest;
-use Drupal\xautoload\Tests\Filesystem\VirtualFilesystem;
-use Drupal\xautoload\Tests\VirtualDrupal\ExampleModulesInterface;
-use Drupal\xautoload\Tests\VirtualDrupal\PureFunctions;
+use Backdrop\xautoload\Tests\BackdropBootTest\AbstractBackdropBootTest;
+use Backdrop\xautoload\Tests\Filesystem\VirtualFilesystem;
+use Backdrop\xautoload\Tests\VirtualBackdrop\ExampleModulesInterface;
+use Backdrop\xautoload\Tests\VirtualBackdrop\PureFunctions;
 
 abstract class AbstractExampleModules implements ExampleModulesInterface {
 
@@ -57,9 +57,9 @@ abstract class AbstractExampleModules implements ExampleModulesInterface {
   }
 
   /**
-   * @param \Drupal\xautoload\Tests\DrupalBootTest\AbstractDrupalBootTest $testCase
+   * @param \Backdrop\xautoload\Tests\BackdropBootTest\AbstractBackdropBootTest $testCase
    */
-  public function assertLoadExampleClasses(AbstractDrupalBootTest $testCase) {
+  public function assertLoadExampleClasses(AbstractBackdropBootTest $testCase) {
     foreach ($this->getExampleClasses() as $class) {
       $testCase->assertLoadClass($class);
     }

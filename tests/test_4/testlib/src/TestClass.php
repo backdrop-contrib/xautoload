@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload_test_4\testlib;
+namespace Backdrop\xautoload_test_4\testlib;
 
 class TestClass {
 

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 
 class ModuleEnable {
 
   /**
-   * @var DrupalGetFilename
+   * @var BackdropGetFilename
    */
   private $backdropGetFilename;
 
@@ -43,7 +43,7 @@ class ModuleEnable {
   private $systemRebuildModuleData;
 
   /**
-   * @param DrupalGetFilename $backdropGetFilename
+   * @param BackdropGetFilename $backdropGetFilename
    * @param HookSystem $hookSystem
    * @param ModuleList $moduleList
    * @param SystemTable $systemTable
@@ -52,7 +52,7 @@ class ModuleEnable {
    * @param SystemUpdateBootstrapStatus $systemUpdateBootstrapStatus
    */
   function __construct(
-    DrupalGetFilename $backdropGetFilename,
+    BackdropGetFilename $backdropGetFilename,
     HookSystem $hookSystem,
     ModuleList $moduleList,
     SystemTable $systemTable,
@@ -70,7 +70,7 @@ class ModuleEnable {
   }
 
   /**
-   * Simulates Drupal's module_enable()
+   * Simulates Backdrop's module_enable()
    *
    * @see module_enable()
    *

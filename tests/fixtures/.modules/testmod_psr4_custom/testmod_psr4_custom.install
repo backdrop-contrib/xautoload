@@ -1,7 +1,7 @@
 <?php
 
-use Drupal\testmod_psr4_custom\Foo;
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\testmod_psr4_custom\Foo;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 function testmod_psr4_custom_enable() {
   StaticCallLog::addCall();

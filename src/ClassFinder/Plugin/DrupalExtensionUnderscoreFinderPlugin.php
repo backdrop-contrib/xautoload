@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder\Plugin;
+namespace Backdrop\xautoload\ClassFinder\Plugin;
 
-class DrupalExtensionUnderscoreFinderPlugin extends DrupalExtensionNamespaceFinderPlugin {
+class BackdropExtensionUnderscoreFinderPlugin extends BackdropExtensionNamespaceFinderPlugin {
 
   /**
    * {@inheritdoc}
@@ -16,11 +16,11 @@ class DrupalExtensionUnderscoreFinderPlugin extends DrupalExtensionNamespaceFind
       return FALSE;
     }
 
-    $nspath = 'Drupal/' . $extension_name . '/';
+    $nspath = 'Backdrop/' . $extension_name . '/';
     $testpath = $nspath . 'Tests/';
     $uspath = $extension_name . '/';
     $lib = dirname($extension_file) . '/lib/';
-    $lib_psr0 = $lib . 'Drupal/' . $extension_name . '/';
+    $lib_psr0 = $lib . 'Backdrop/' . $extension_name . '/';
 
     // Try PEAR-Flat.
     if ($api->guessPath($lib . $relative_path)) {

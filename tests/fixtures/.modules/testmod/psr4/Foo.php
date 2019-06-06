@@ -1,5 +1,5 @@
 <?php
 
-namespace Drupal\testmod;
+namespace Backdrop\testmod;
 
 class Foo {}

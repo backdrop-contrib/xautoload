@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\Discovery\WildcardFileFinder;
+use Backdrop\xautoload\Discovery\WildcardFileFinder;
 
 class DiscoveryTest extends \PHPUnit_Framework_TestCase {
 
@@ -27,8 +27,8 @@ class DiscoveryTest extends \PHPUnit_Framework_TestCase {
 
     // The class file is loaded using the regular uncached xautoload autoload.
     $file_finder = new WildcardFileFinder();
-    $file_finder->addDrupalPaths($files, TRUE);
-    $files = $file_finder->getDrupalFiles();
+    $file_finder->addBackdropPaths($files, TRUE);
+    $files = $file_finder->getBackdropFiles();
 
     // The order of scandir() cannot be predicted, therefore only the sorted
     // list of files is being compared here.

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\ClassLoader;
+namespace Backdrop\xautoload\ClassLoader;
 
-use Drupal\xautoload\ClassFinder\ClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\ClassFinderInterface;
 
 /**
  * Behaves mostly like the Symfony ClassLoader classes.

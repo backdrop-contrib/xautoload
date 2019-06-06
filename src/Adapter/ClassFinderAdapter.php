@@ -1,17 +1,17 @@
 <?php
 
 
-namespace Drupal\xautoload\Adapter;
+namespace Backdrop\xautoload\Adapter;
 
-use Drupal\xautoload\Discovery\ClassMapGenerator;
-use Drupal\xautoload\Util;
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
-use Drupal\xautoload\Discovery\ComposerDir;
-use Drupal\xautoload\Discovery\ComposerJson;
-use Drupal\xautoload\ClassFinder\GenericPrefixMap;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\Discovery\ClassMapGeneratorInterface;
+use Backdrop\xautoload\Discovery\ClassMapGenerator;
+use Backdrop\xautoload\Util;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\Discovery\ComposerDir;
+use Backdrop\xautoload\Discovery\ComposerJson;
+use Backdrop\xautoload\ClassFinder\GenericPrefixMap;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\Discovery\ClassMapGeneratorInterface;
 
 /**
  * An instance of this class is passed around to implementations of
@@ -64,7 +64,7 @@ class ClassFinderAdapter implements ClassFinderAdapterInterface {
   }
 
   /**
-   * @return \Drupal\xautoload\ClassFinder\GenericPrefixMap
+   * @return \Backdrop\xautoload\ClassFinder\GenericPrefixMap
    */
   function getNamespaceMap() {
     return $this->namespaceMap;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\ClassFinder\InjectedApi;
+namespace Backdrop\xautoload\ClassFinder\InjectedApi;
 
 /**
  * To help testability, we use an injected API instead of just a return value.

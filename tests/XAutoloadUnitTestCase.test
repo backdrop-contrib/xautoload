@@ -1,11 +1,11 @@
 <?php
 
-//namespace Drupal\xautoload\Tests;
+//namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\ClassFinder\ClassFinder;
-use Drupal\xautoload\ClassFinder\InjectedApi\CollectFilesInjectedApi;
-use Drupal\xautoload\ClassLoader\ClassLoaderInterface;
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\ClassFinder\ClassFinder;
+use Backdrop\xautoload\ClassFinder\InjectedApi\CollectFilesInjectedApi;
+use Backdrop\xautoload\ClassLoader\ClassLoaderInterface;
+use Backdrop\xautoload\Util;
 
 class XAutoloadUnitTestCase extends \BackdropUnitTestCase {
 
@@ -36,7 +36,7 @@ class XAutoloadUnitTestCase extends \BackdropUnitTestCase {
 
   function testAutoloadStackOrder() {
     $expected = array(
-      'Drupal\\xautoload\\ClassFinder\\ClassFinder->loadClass()',
+      'Backdrop\\xautoload\\ClassFinder\\ClassFinder->loadClass()',
       /* @see _backdrop_bootstrap_database() */
       'backdrop_autoload',
       /* @see simpletest_classloader_register() */
@@ -55,14 +55,14 @@ class XAutoloadUnitTestCase extends \BackdropUnitTestCase {
 
     // Prepare the class finder.
     $finder = new ClassFinder();
-    $finder->add('Drupal\\ex_ample', 'sites/all/modules/contrib/ex_ample/lib-psr0');
-    $finder->addPsr4('Drupal\\ex_ample', 'sites/all/modules/contrib/ex_ample/lib-psr4');
+    $finder->add('Backdrop\\ex_ample', 'sites/all/modules/contrib/ex_ample/lib-psr0');
+    $finder->addPsr4('Backdrop\\ex_ample', 'sites/all/modules/contrib/ex_ample/lib-psr4');
 
-    // Test class finding for 'Drupal\\ex_ample\\Abc_Def'.
-    $this->assertFinderSuggestions($finder, 'Drupal\\ex_ample\\Abc_Def', array(
+    // Test class finding for 'Backdrop\\ex_ample\\Abc_Def'.
+    $this->assertFinderSuggestions($finder, 'Backdrop\\ex_ample\\Abc_Def', array(
       // Class finder is expected to suggest these files, in the exact order,
       // until one of them is accepted.
-      array('suggestFile', 'sites/all/modules/contrib/ex_ample/lib-psr0/Drupal/ex_ample/Abc/Def.php'),
+      array('suggestFile', 'sites/all/modules/contrib/ex_ample/lib-psr0/Backdrop/ex_ample/Abc/Def.php'),
       array('suggestFile', 'sites/all/modules/contrib/ex_ample/lib-psr4/Abc_Def.php'),
     ));
   }

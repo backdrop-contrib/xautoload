@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
 use RuntimeException;
 

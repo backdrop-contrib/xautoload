@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\Util;
+namespace Backdrop\xautoload\Tests\Util;
 
 /**
  * @see StaticCallLog

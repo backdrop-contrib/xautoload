@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
-use Drupal\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
-use Drupal\xautoload\ClassFinder\InjectedApi\LoadClassInjectedAPI;
-use Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\DirectoryBehavior\DirectoryBehaviorInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\LoadClassInjectedAPI;
+use Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
 use xautoload_FinderPlugin_Interface;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
 
 /**
  * Helper class for the class finder.

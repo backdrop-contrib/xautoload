@@ -1,14 +1,14 @@
 <?php
 
-use Drupal\xautoload\Adapter\LocalDirectoryAdapter;
-use Drupal\xautoload\Tests\Util\StaticCallLog;
+use Backdrop\xautoload\Adapter\LocalDirectoryAdapter;
+use Backdrop\xautoload\Tests\Util\StaticCallLog;
 
 /**
  * Implements hook_init()
  */
 function testmod_init() {
   StaticCallLog::addCall();
-  new \Drupal\testmod\Foo();
+  new \Backdrop\testmod\Foo();
   # libraries_load('testlib');
   new \Acme\TestLib\Foo();
   new \ComposerTestLib\Other\Foo();
@@ -21,7 +21,7 @@ function testmod_init() {
  */
 function testmod_modules_enabled() {
   StaticCallLog::addCall();
-  # new \Drupal\testmod\Foo();
+  # new \Backdrop\testmod\Foo();
   new \Acme\TestLib\Foo();
   new \ComposerTestLib\Other\Foo();
   new \ComposerTestLib\Foo();
@@ -33,7 +33,7 @@ function testmod_modules_enabled() {
  */
 function testmod_watchdog() {
   StaticCallLog::addCall();
-  # new \Drupal\testmod\Foo();
+  # new \Backdrop\testmod\Foo();
   # new \Acme\TestLib\Foo();
 }
 
@@ -44,8 +44,8 @@ function testmod_watchdog() {
  */
 function testmod_xautoload($adapter) {
   StaticCallLog::addCall();
-  $adapter->addPsr4('Drupal\testmod\\', 'psr4');
-  new \Drupal\testmod\Foo();
+  $adapter->addPsr4('Backdrop\testmod\\', 'psr4');
+  new \Backdrop\testmod\Foo();
 }
 
 /**
@@ -53,7 +53,7 @@ function testmod_xautoload($adapter) {
  */
 function testmod_libraries_info() {
   StaticCallLog::addCall();
-  new \Drupal\testmod\Foo();
+  new \Backdrop\testmod\Foo();
   return array(
     'testlib' => array(
       'name' => 'Test library',

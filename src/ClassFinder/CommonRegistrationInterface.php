@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder;
+namespace Backdrop\xautoload\ClassFinder;
 
 /**
  * Class finder interface with additional registration methods.

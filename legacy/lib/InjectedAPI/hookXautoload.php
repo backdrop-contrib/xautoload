@@ -1,9 +1,9 @@
 <?php
 
-use Drupal\xautoload\Adapter\LocalDirectoryAdapter;
-use Drupal\xautoload\Util;
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\Adapter\LocalDirectoryAdapter;
+use Backdrop\xautoload\Util;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
 
 /**
  * An instance of this class is passed around to implementations of
@@ -47,7 +47,7 @@ class xautoload_InjectedAPI_hookXautoload extends LocalDirectoryAdapter {
 
   /**
    * Register an additional prefix for this module.
-   * Note: Drupal\<module name>\ is already registered for <module dir>/lib.
+   * Note: Backdrop\<module name>\ is already registered for <module dir>/lib.
    *
    * @deprecated
    *
@@ -67,7 +67,7 @@ class xautoload_InjectedAPI_hookXautoload extends LocalDirectoryAdapter {
 
   /**
    * Register an additional namespace for this module.
-   * Note: Drupal\<module name>\ is already registered for <module dir>/lib.
+   * Note: Backdrop\<module name>\ is already registered for <module dir>/lib.
    *
    * @deprecated
    *
@@ -128,7 +128,7 @@ class xautoload_InjectedAPI_hookXautoload extends LocalDirectoryAdapter {
 
   /**
    * Register an additional namespace for this module.
-   * Note: Drupal\<module name>\ is already registered for <module dir>/lib.
+   * Note: Backdrop\<module name>\ is already registered for <module dir>/lib.
    *
    * @deprecated
    *
@@ -148,7 +148,7 @@ class xautoload_InjectedAPI_hookXautoload extends LocalDirectoryAdapter {
 
   /**
    * Register an additional namespace for this module.
-   * Note: Drupal\<module name>\ is already registered for <module dir>/lib.
+   * Note: Backdrop\<module name>\ is already registered for <module dir>/lib.
    *
    * @deprecated
    *
@@ -205,7 +205,7 @@ class xautoload_InjectedAPI_hookXautoload extends LocalDirectoryAdapter {
   }
 
   /**
-   * Process a given directory to make it relative to Drupal root,
+   * Process a given directory to make it relative to Backdrop root,
    * instead of relative to the current extension dir.
    *
    * @deprecated

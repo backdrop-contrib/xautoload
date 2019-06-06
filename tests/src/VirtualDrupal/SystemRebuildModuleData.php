@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class SystemRebuildModuleData {
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
@@ -32,14 +32,14 @@ class SystemRebuildModuleData {
   private $systemListReset;
 
   /**
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    * @param ModuleBuildDependencies $moduleBuildDependencies
    * @param SystemTable $systemTable
    * @param SystemBuildModuleData $systemBuildModuleData
    * @param SystemListReset $systemListReset
    */
   function __construct(
-    DrupalStatic $backdropStatic,
+    BackdropStatic $backdropStatic,
     ModuleBuildDependencies $moduleBuildDependencies,
     SystemTable $systemTable,
     SystemBuildModuleData $systemBuildModuleData,

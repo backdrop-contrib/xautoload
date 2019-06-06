@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder\Plugin;
+namespace Backdrop\xautoload\ClassFinder\Plugin;
 
-use Drupal\xautoload\ClassFinder\InjectedApi\FindFileInjectedApi;
+use Backdrop\xautoload\ClassFinder\InjectedApi\FindFileInjectedApi;
 
 class Psr4FinderPlugin implements FinderPluginInterface {
 

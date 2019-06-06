@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\ClassFinder\ClassFinder;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
-use Drupal\xautoload\Tests\Filesystem\StreamWrapper;
-use Drupal\xautoload\Tests\Filesystem\VirtualFilesystem;
+use Backdrop\xautoload\ClassFinder\ClassFinder;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\Tests\Filesystem\StreamWrapper;
+use Backdrop\xautoload\Tests\Filesystem\VirtualFilesystem;
 
 class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
 
@@ -35,11 +35,11 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
     // Prepare the class finder.
     $finder = new ClassFinder();
 
-    $finder->addPsr4('Drupal\ex_ample\\', 'test://base/lib/');
+    $finder->addPsr4('Backdrop\ex_ample\\', 'test://base/lib/');
 
     $this->assertCandidateOrder(
       $finder,
-      'Drupal\ex_ample\Psr4_%\Foo_Bar',
+      'Backdrop\ex_ample\Psr4_%\Foo_Bar',
       array('test://base/lib/Psr4_%/Foo_Bar.php'));
   }
 
@@ -52,15 +52,15 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
     $finder = new ClassFinder();
     $psr0 = new Psr0DirectoryBehavior();
 
-    $finder->registerNamespaceDeep('Drupal\\ex_ample', 'test://base/lib', $psr0);
-    $finder->registerNamespaceRoot('Drupal\\ex_ample', 'test://base/vendor', $psr0);
+    $finder->registerNamespaceDeep('Backdrop\\ex_ample', 'test://base/lib', $psr0);
+    $finder->registerNamespaceRoot('Backdrop\\ex_ample', 'test://base/vendor', $psr0);
 
     $this->assertCandidateOrder(
       $finder,
-      'Drupal\ex_ample\Sub_%\Foo_Bar',
+      'Backdrop\ex_ample\Sub_%\Foo_Bar',
       array(
         'test://base/lib/Sub_%/Foo/Bar.php',
-        'test://base/vendor/Drupal/ex_ample/Sub_%/Foo/Bar.php',
+        'test://base/vendor/Backdrop/ex_ample/Sub_%/Foo/Bar.php',
       ));
   }
 
@@ -111,7 +111,7 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
   // ---------------------------------------------------------------------------
 
   /**
-   * @param \Drupal\xautoload\ClassLoader\ClassLoaderInterface $loader
+   * @param \Backdrop\xautoload\ClassLoader\ClassLoaderInterface $loader
    * @param string $class
    * @param string $file
    */
@@ -131,7 +131,7 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @param \Drupal\xautoload\ClassLoader\ClassLoaderInterface $loader
+   * @param \Backdrop\xautoload\ClassLoader\ClassLoaderInterface $loader
    * @param string $classTemplate
    * @param string[] $expectedCandidateTemplates
    */
@@ -148,7 +148,7 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase {
   /**
    * Assert that inclusions are done in the expected order.
    *
-   * @param \Drupal\xautoload\ClassLoader\ClassLoaderInterface $loader
+   * @param \Backdrop\xautoload\ClassLoader\ClassLoaderInterface $loader
    * @param string $class
    * @param string[] $expectedCandidates
    */

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\xautoload\Libraries;
+namespace Backdrop\xautoload\Libraries;
 
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Phases\PhaseObserverInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Phases\PhaseObserverInterface;
 
 
 /**
@@ -16,7 +16,7 @@ use Drupal\xautoload\Phases\PhaseObserverInterface;
 class LibrariesOnInit implements PhaseObserverInterface {
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   private $system;
 
@@ -26,9 +26,9 @@ class LibrariesOnInit implements PhaseObserverInterface {
   private $finder;
 
   /**
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    */
-  function __construct(DrupalSystemInterface $system) {
+  function __construct(BackdropSystemInterface $system) {
     $this->system = $system;
   }
 

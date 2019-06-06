@@ -1,5 +1,5 @@
 <?php
 
-namespace Drupal\xautoload\ClassLoader;
+namespace Backdrop\xautoload\ClassLoader;
 
 class CacheNotSupportedException extends \Exception {}

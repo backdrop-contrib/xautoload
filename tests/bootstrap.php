@@ -1,12 +1,12 @@
 <?php
 
-use Drupal\xautoload\Discovery\ClassMapGenerator;
+use Backdrop\xautoload\Discovery\ClassMapGenerator;
 
 require_once dirname(__DIR__) . '/xautoload.early.lib.inc';
 
 _xautoload_register();
 
-xautoload()->finder->addPsr4('Drupal\xautoload\Tests\\', __DIR__ . '/src/');
+xautoload()->finder->addPsr4('Backdrop\xautoload\Tests\\', __DIR__ . '/src/');
 
 // Use a non-cached class map generator.
 xautoload()->getServiceContainer()->set('classMapGenerator', new ClassMapGenerator());
@@ -30,8 +30,8 @@ call_user_func(
         }
       );
     };
-    $addPsr4('Drupal\xautoload\Tests\\', __DIR__ . '/src');
-    $addPsr4('Drupal\xautoload\\', dirname(__DIR__) . '/src');
+    $addPsr4('Backdrop\xautoload\Tests\\', __DIR__ . '/src');
+    $addPsr4('Backdrop\xautoload\\', dirname(__DIR__) . '/src');
   }
 );
 */

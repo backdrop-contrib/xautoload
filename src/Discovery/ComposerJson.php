@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
 
 class ComposerJson {
 

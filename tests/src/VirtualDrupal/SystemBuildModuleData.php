@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 class SystemBuildModuleData {
@@ -98,7 +98,7 @@ class SystemBuildModuleData {
       // Add a default distribution name if the profile did not provide one. This
       // matches the default value used in install_profile_info().
       if (!isset($modules[$profile]->info['distribution_name'])) {
-        $modules[$profile]->info['distribution_name'] = 'Drupal';
+        $modules[$profile]->info['distribution_name'] = 'Backdrop';
       }
     }
 

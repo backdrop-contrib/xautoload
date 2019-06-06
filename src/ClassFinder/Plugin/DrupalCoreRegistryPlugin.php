@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder\Plugin;
+namespace Backdrop\xautoload\ClassFinder\Plugin;
 
-use Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
 
 /**
  * @see _registry_check_code()
  */
-class DrupalCoreRegistryPlugin implements FinderPluginInterface {
+class BackdropCoreRegistryPlugin implements FinderPluginInterface {
 
   /**
    * @var string

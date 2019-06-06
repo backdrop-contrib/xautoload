@@ -1,23 +1,23 @@
 <?php
 
-namespace Drupal\xautoload\ClassFinder\Plugin;
+namespace Backdrop\xautoload\ClassFinder\Plugin;
 
-use Drupal\xautoload\ClassFinder\GenericPrefixMap;
-use Drupal\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
-use Drupal\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
+use Backdrop\xautoload\ClassFinder\GenericPrefixMap;
+use Backdrop\xautoload\DirectoryBehavior\DefaultDirectoryBehavior;
+use Backdrop\xautoload\DirectoryBehavior\Psr0DirectoryBehavior;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
 
 /**
  * There are different dimensions of state for each module:
  *
- * 1) Classes outside of Drupal\\$modulename\\Tests\\
+ * 1) Classes outside of Backdrop\\$modulename\\Tests\\
  *   a) We don't know yet whether these classes are using PSR-0, PSR-4,
  *     PEAR-Flat, or none of these.
  *   b) We know these classes use PSR-0 only.
  *   c) We know these classes use PSR-4 only.
  *   d) We know these classes use PEAR-Flat only.
  *
- * 2) Classes inside Drupal\\$modulename\\Tests\\
+ * 2) Classes inside Backdrop\\$modulename\\Tests\\
  *   a) We don't know yet whether these classes are using PSR-0, PSR-4, or none
  *     of these.
  *   b) We know these classes all use PSR-0.
@@ -29,7 +29,7 @@ use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
  * due to another autoloader instance being fired during a file inclusion, e.g.
  * for a base class.
  */
-class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
+class BackdropExtensionNamespaceFinderPlugin implements FinderPluginInterface {
 
   /**
    * @var string
@@ -66,7 +66,7 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
   protected $psr0Behavior;
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   protected $system;
 
@@ -75,7 +75,7 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
    *   E.g. 'theme' or 'module'.
    * @param GenericPrefixMap $namespace_map
    * @param GenericPrefixMap $prefix_map
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    */
   function __construct($type, $namespace_map, $prefix_map, $system) {
     $this->type = $type;
@@ -87,11 +87,11 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
   }
 
   /**
-   * Looks up a class starting with "Drupal\$extension_name\\".
+   * Looks up a class starting with "Backdrop\$extension_name\\".
    *
    * This plugin method will be called for every class beginning with
-   * "Drupal\\$extension_name\\", as long as the plugin is registered for
-   * $logical_base_path = 'Drupal/$extension_name/'.
+   * "Backdrop\\$extension_name\\", as long as the plugin is registered for
+   * $logical_base_path = 'Backdrop/$extension_name/'.
    *
    * A similar plugin will is registered along with this one for the PEAR-FLAT
    * pattern, called for every class beginning with $modulename . '_'.
@@ -104,11 +104,11 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
    *
    * The plugin will instead register a direct
    *
-   * @param \Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface $api
+   * @param \Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface $api
    *   An object with methods like suggestFile() and guessFile().
    * @param string $logical_base_path
    *   The logical base path determined from the registered namespace.
-   *   E.g. 'Drupal/menupoly/'.
+   *   E.g. 'Backdrop/menupoly/'.
    * @param string $relative_path
    *   Remaining part of the logical path following $logical_base_path.
    *   E.g. 'FooNamespace/BarClass.php'.
@@ -130,18 +130,18 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
       return FALSE;
     }
 
-    $nspath = 'Drupal/' . $extension_name . '/';
+    $nspath = 'Backdrop/' . $extension_name . '/';
     $testpath = $nspath . 'Tests/';
     $uspath = $extension_name . '/';
     $extension_dir = dirname($extension_file);
     $src = $extension_dir . '/src/';
-    $lib_psr0 = $extension_dir . '/lib/Drupal/' . $extension_name . '/';
+    $lib_psr0 = $extension_dir . '/lib/Backdrop/' . $extension_name . '/';
     $is_test_class = (0 === strpos($relative_path, 'Tests/'));
 
     // Try PSR-4.
     if ($api->guessPath($src . $relative_path)) {
       if ($is_test_class) {
-        // Register PSR-0 directory for "Drupal\\$modulename\\Tests\\"
+        // Register PSR-0 directory for "Backdrop\\$modulename\\Tests\\"
         // This generally happens only once per module, because for subsequent
         // test classes the class will be found before this plugin is triggered.
         // However, for class_exists() with nonexistent test files, this line
@@ -152,11 +152,11 @@ class DrupalExtensionNamespaceFinderPlugin implements FinderPluginInterface {
         return TRUE;
       }
 
-      // Register PSR-4 directory for "Drupal\\$modulename\\".
+      // Register PSR-4 directory for "Backdrop\\$modulename\\".
       $this->namespaceMap->registerDeepPath($nspath, $src, $this->defaultBehavior);
 
       // Unregister the lazy plugins, including this one, for
-      // "Drupal\\$modulename\\" and for $modulename . '_'.
+      // "Backdrop\\$modulename\\" and for $modulename . '_'.
       $this->namespaceMap->unregisterDeepPath($nspath, $extension_name);
       $this->prefixMap->unregisterDeepPath($uspath, $extension_name);
 

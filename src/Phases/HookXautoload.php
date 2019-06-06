@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Drupal\xautoload\Phases;
+namespace Backdrop\xautoload\Phases;
 
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
 
 
 /**
@@ -26,7 +26,7 @@ class HookXautoload implements PhaseObserverInterface {
   private $finder = NULL;
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   private $system;
 
@@ -36,9 +36,9 @@ class HookXautoload implements PhaseObserverInterface {
   private $extensions;
 
   /**
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    */
-  public function __construct(DrupalSystemInterface $system) {
+  public function __construct(BackdropSystemInterface $system) {
     $this->system = $system;
   }
 

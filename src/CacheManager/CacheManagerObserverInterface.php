@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\xautoload\CacheManager;
+namespace Backdrop\xautoload\CacheManager;
 
 interface CacheManagerObserverInterface {
 

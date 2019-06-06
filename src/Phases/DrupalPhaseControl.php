@@ -1,19 +1,19 @@
 <?php
 
 
-namespace Drupal\xautoload\Phases;
+namespace Backdrop\xautoload\Phases;
 
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\CacheMissObserver\CacheMissObserverInterface;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\CacheMissObserver\CacheMissObserverInterface;
 
 /**
- * Records events during a Drupal request, and forwards them to the registered
+ * Records events during a Backdrop request, and forwards them to the registered
  * observers after the first class loader cache miss.
  */
-class DrupalPhaseControl implements CacheMissObserverInterface {
+class BackdropPhaseControl implements CacheMissObserverInterface {
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   private $system;
 
@@ -47,10 +47,10 @@ class DrupalPhaseControl implements CacheMissObserverInterface {
   private $bootPhase;
 
   /**
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    * @param PhaseObserverInterface[] $observers
    */
-  public function __construct(DrupalSystemInterface $system, array $observers) {
+  public function __construct(BackdropSystemInterface $system, array $observers) {
     $this->system = $system;
     $this->observers = $observers;
   }

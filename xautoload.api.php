@@ -22,7 +22,7 @@ function EXAMPLE_foo() {
  * Register additional classes, namespaces, autoload patterns, that are not
  * already registered by default.
  *
- * @param \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
+ * @param \Backdrop\xautoload\Adapter\LocalDirectoryAdapter $adapter
  *   An adapter object that can register stuff into the class loader.
  */
 function hook_xautoload($adapter) {
@@ -74,7 +74,7 @@ function mymodule_libraries_info() {
       'version' => '1.0',
       'xautoload' => function($adapter) {
           /**
-           * @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
+           * @var \Backdrop\xautoload\Adapter\LocalDirectoryAdapter $adapter
            *   An adapter object that can register stuff into the class loader.
            */
           // Register a namespace with PSR-0 root in
@@ -85,7 +85,7 @@ function mymodule_libraries_info() {
     'gurkentraum' => array(
       'name' => 'Gurkentraum library',
       'xautoload' => function($adapter) {
-          /** @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter */
+          /** @var \Backdrop\xautoload\Adapter\LocalDirectoryAdapter $adapter */
           // Scan sites/all/libraries/ruebenkraut/composer.json to look for
           // autoload information.
           $adapter->composerJson('composer.json');

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\DirectoryBehavior;
+namespace Backdrop\xautoload\DirectoryBehavior;
 
 interface DirectoryBehaviorInterface {
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 /**
@@ -10,7 +10,7 @@ namespace Drupal\xautoload\Tests\VirtualDrupal;
 class ModuleList {
 
   /**
-   * @var DrupalGetFilename
+   * @var BackdropGetFilename
    */
   private $backdropGetFilename;
 
@@ -30,16 +30,16 @@ class ModuleList {
   private $moduleListSorted;
 
   /**
-   * @var DrupalStatic
+   * @var BackdropStatic
    */
   private $backdropStatic;
 
   /**
-   * @param DrupalGetFilename $backdropGetFilename
+   * @param BackdropGetFilename $backdropGetFilename
    * @param SystemList $systemList
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    */
-  function __construct(DrupalGetFilename $backdropGetFilename, SystemList $systemList, DrupalStatic $backdropStatic) {
+  function __construct(BackdropGetFilename $backdropGetFilename, SystemList $systemList, BackdropStatic $backdropStatic) {
     $this->backdropGetFilename = $backdropGetFilename;
     $this->systemList = $systemList;
     $this->backdropStatic = $backdropStatic;

@@ -4,7 +4,7 @@
  */
 
 
-namespace Drupal\xautoload\Discovery;
+namespace Backdrop\xautoload\Discovery;
 
 /**
  * Scan directories for wildcard files[] instructions in a module's info file.
@@ -28,7 +28,7 @@ class WildcardFileFinder {
    * @param array $paths
    *   Array keys are file paths or wildcard file paths.
    */
-  function addDrupalPaths(array $paths) {
+  function addBackdropPaths(array $paths) {
     foreach ($paths as $path => $value) {
       if (1
         && FALSE !== strpos($path, '*')
@@ -85,7 +85,7 @@ class WildcardFileFinder {
   /**
    * @return mixed[]
    */
-  function getDrupalFiles() {
+  function getBackdropFiles() {
     return $this->files;
   }
 

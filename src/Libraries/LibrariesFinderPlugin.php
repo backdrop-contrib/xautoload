@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Drupal\xautoload\Libraries;
+namespace Backdrop\xautoload\Libraries;
 
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
-use Drupal\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
-use Drupal\xautoload\ClassFinder\Plugin\FinderPluginInterface;
-use Drupal\xautoload\DrupalSystem\DrupalSystemInterface;
-use Drupal\xautoload\Phases\PhaseObserverInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\InjectedApi\InjectedApiInterface;
+use Backdrop\xautoload\ClassFinder\Plugin\FinderPluginInterface;
+use Backdrop\xautoload\BackdropSystem\BackdropSystemInterface;
+use Backdrop\xautoload\Phases\PhaseObserverInterface;
 
 
 /**
@@ -23,15 +23,15 @@ class LibrariesFinderPlugin implements FinderPluginInterface {
   private $finder;
 
   /**
-   * @var DrupalSystemInterface
+   * @var BackdropSystemInterface
    */
   private $system;
 
   /**
    * @param ExtendedClassFinderInterface $finder
-   * @param DrupalSystemInterface $system
+   * @param BackdropSystemInterface $system
    */
-  function __construct(ExtendedClassFinderInterface $finder, DrupalSystemInterface $system) {
+  function __construct(ExtendedClassFinderInterface $finder, BackdropSystemInterface $system) {
     $this->finder = $finder;
     $this->system = $system;
   }

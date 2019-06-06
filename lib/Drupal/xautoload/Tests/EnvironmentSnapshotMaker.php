@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\Util;
+use Backdrop\xautoload\Util;
 
 class EnvironmentSnapshotMaker {
 

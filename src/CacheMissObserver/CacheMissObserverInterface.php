@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\xautoload\CacheMissObserver;
+namespace Backdrop\xautoload\CacheMissObserver;
 
-use Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface;
+use Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface;
 
 /**
  * An operation that can be queued up to be performed on the class finder once

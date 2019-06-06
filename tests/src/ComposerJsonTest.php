@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests;
+namespace Backdrop\xautoload\Tests;
 
-use Drupal\xautoload\Adapter\ClassFinderAdapter;
-use Drupal\xautoload\Adapter\LocalDirectoryAdapter;
-use Drupal\xautoload\ClassFinder\ClassFinder;
-use Drupal\xautoload\Discovery\ClassMapGenerator;
+use Backdrop\xautoload\Adapter\ClassFinderAdapter;
+use Backdrop\xautoload\Adapter\LocalDirectoryAdapter;
+use Backdrop\xautoload\ClassFinder\ClassFinder;
+use Backdrop\xautoload\Discovery\ClassMapGenerator;
 
 class ComposerJsonTest extends \PHPUnit_Framework_TestCase {
 

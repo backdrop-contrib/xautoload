@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\xautoload\Tests\VirtualDrupal;
+namespace Backdrop\xautoload\Tests\VirtualBackdrop;
 
 
 
@@ -13,11 +13,11 @@ class HookSystem {
   private $moduleImplements;
 
   /**
-   * @param DrupalStatic $backdropStatic
+   * @param BackdropStatic $backdropStatic
    * @param Cache $cache
    * @param ModuleList $moduleList
    */
-  function __construct(DrupalStatic $backdropStatic, Cache $cache, ModuleList $moduleList) {
+  function __construct(BackdropStatic $backdropStatic, Cache $cache, ModuleList $moduleList) {
     $this->moduleImplements = new ModuleImplements($backdropStatic, $cache, $moduleList, $this);
   }
 
