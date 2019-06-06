@@ -112,9 +112,9 @@ function _xautoload_register() {
  */
 function _xautoload_autoload_temp($name) {
 
-  if ('Backdrop\xautoload\\' === substr($name, 0, 17)) {
+  if ('Backdrop\xautoload\\' === substr($name, 0, 19)) {
     // PSR-4 case
-    $file = XAUTOLOAD_SRC_DIR . '/' . str_replace('\\', '/', substr($name, 17)) . '.php';
+    $file = XAUTOLOAD_SRC_DIR . '/' . str_replace('\\', '/', substr($name, 19)) . '.php';
     require_once $file;
   }
   elseif ('xautoload_' === substr($name, 0, 10) && FALSE === strpos($name, '\\')) {
