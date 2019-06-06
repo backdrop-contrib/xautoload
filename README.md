@@ -53,6 +53,7 @@ Current Maintainers
 -------------------
 
 - Attila Vasas (https://github.com/vasasa).
+- Seeking additional maintainers.
 
 
 Credits
