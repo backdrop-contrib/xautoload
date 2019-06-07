@@ -14,7 +14,6 @@ Class loading for Backdrop modules
 - D8-style PSR-4 module namespaces (under "$module_dir/src/..").
 - Old D8-style PSR-0 module namespaces (under "$module_dir/lib/..").
 - PHP 5.2 compatibility pattern ("PEAR-flat") with prefix/underscore class names instead of namespaces.
-- Shortcut syntax for files[] directive in *.info file, if you stick with the D7 registry class loading.
 
 
 Class loading for 3rd party libraries
