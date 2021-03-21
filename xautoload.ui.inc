@@ -22,7 +22,8 @@ function xautoload_form_system_performance_settings_alter(&$form) {
     'apcu' => $apcu_status,
     'wincache' => (extension_loaded('WinCache') && function_exists('wincache_ucache_get')),
     'xcache' => (extension_loaded('Xcache') && function_exists('xcache_get')),
-    'dbcache' => TRUE,
+    // "Self-updating database classmap" (dbcache) is incompatible with Backdrop CMS.
+    // 'dbcache' => TRUE,
   );
   $cache_names = array(
     'apcu_q' => t('Self-updating APCu classmap (*)'),
@@ -30,11 +31,11 @@ function xautoload_form_system_performance_settings_alter(&$form) {
     'apcu' => 'APCu',
     'wincache' => 'WinCache',
     'xcache' => 'XCache',
-    'dbcache' => t('Self-updating database classmap (*)'),
+    // 'dbcache' => t('Self-updating database classmap (*)'),
   );
   $options = $cache_names;
   $options_descriptions = array();
-  $options['dbcache'] = l($options['dbcache'], 'https://www.drupal.org/node/2451261');
+  // $options['dbcache'] = l($options['dbcache'], 'https://www.drupal.org/node/2451261');
   $active_cache_key = NULL;
   $active_cache_name = t('No cache.');
   foreach ($cache_names as $key => $title) {
