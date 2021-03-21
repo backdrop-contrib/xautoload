@@ -21,7 +21,12 @@ class BackdropSystem implements BackdropSystemInterface {
    * {@inheritdoc}
    */
   function variableGet($name, $default = NULL) {
-    return config_get('xautoload.settings', $name);
+    $return = config_get('xautoload.settings', $name);
+    if ($return === NULL) {
+      $return = $default;
+      config_set('xautoload.settings', $name, $default);
+    }
+    return $return;
   }
 
   /**
