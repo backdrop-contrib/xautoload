@@ -27,3 +27,10 @@ function xautoload_uninstall() {
   $config->clear('xautoload_cache_mode');
   $config->save();
 }
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function xautoload_update_last_removed() {
+  return 7000;
+}
