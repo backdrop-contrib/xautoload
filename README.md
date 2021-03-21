@@ -31,7 +31,7 @@ How to use
 - Install this module using the official Backdrop CMS instructions at
 https://backdropcms.org/guide/modules
 - Optionally, enable APC and other cache options on Administration > Configuration > Development > Performance. The more checkboxes, the better!
-- Add as a dependency in your modules that need it: `dependencies[] = xautoload (>= 7.x-5.0)`
+- Add as a dependency in your modules that need it: `dependencies[] = xautoload (>= 1.x-5.0)`
 - Now create your PSR-4 class files, e.g.
 File: `"$module_dir/src/Foo/Bar.php"`
 ```php
