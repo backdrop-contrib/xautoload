@@ -140,18 +140,6 @@ function _xautoload_register_backdrop() {
 
   $services = xautoload()->getServiceContainer();
 
-  if ($services->system->variableGet(XAUTOLOAD_VARNAME_REPLACE_CORE)) {
-    /**
-     * Completely take over.
-     *
-     * @see _backdrop_bootstrap_database()
-     * @see backdrop_autoload_class()
-     * @see backdrop_autoload_interface()
-     */
-    spl_autoload_unregister('backdrop_autoload_class');
-    spl_autoload_unregister('backdrop_autoload_interface');
-  }
-
   $lazy = $services->system->variableGet(XAUTOLOAD_VARNAME_CACHE_LAZY, FALSE);
   $decorated = $lazy
     ? $services->proxyFinder

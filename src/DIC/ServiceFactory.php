@@ -146,9 +146,6 @@ class ServiceFactory {
       new HookXautoload($services->system),
       new LibrariesOnInit($services->system),
     );
-    if ($services->system->variableGet(XAUTOLOAD_VARNAME_REPLACE_CORE, FALSE)) {
-      $observers[] = new BackdropCoreRegistryRegistrator();
-    }
     return new BackdropPhaseControl($services->system, $observers);
   }
 
