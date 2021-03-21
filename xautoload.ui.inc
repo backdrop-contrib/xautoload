@@ -13,7 +13,7 @@ function xautoload_form_system_performance_settings_alter(&$form) {
     '#type' => 'fieldset',
     '#title' => t('X Autoload'),
   );
-
+  $form['xautoload']['#config'] = 'xautoload.settings';
   $cache_default_value = config_get('xautoload.settings', XAUTOLOAD_VARNAME_CACHE_TYPES);
 
   $cache_status = array(
