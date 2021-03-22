@@ -164,9 +164,9 @@ function _xautoload_register_backdrop() {
   elseif (!empty($cache_types['xcache']) && extension_loaded('Xcache') && function_exists('xcache_get')) {
     $cached_loader = XCacheClassLoader::create($decorated, $services->cacheManager);
   }
-  elseif (!empty($cache_types['dbcache'])) {
-    $cached_loader = DbCacheClassLoader::create($decorated, $services->cacheManager);
-  }
+  // elseif (!empty($cache_types['dbcache'])) {
+  //   $cached_loader = DbCacheClassLoader::create($decorated, $services->cacheManager);
+  // }
 
   if (isset($cached_loader)) {
     if ($lazy) {
