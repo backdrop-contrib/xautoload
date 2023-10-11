@@ -40,8 +40,16 @@ class ClassFinderAdapter implements ClassFinderAdapterInterface {
    */
   protected $classMapGenerator;
 
+  /**
+   * @var Psr0DirectoryBehavior
+   */
   public $psr0Behavior;
+
+  /**
+   * var DefaultDirectoryBehavior
+   */
   public $defaultBehavior;
+
   /**
    * @param ExtendedClassFinderInterface $finder
    *
