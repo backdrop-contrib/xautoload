@@ -43,12 +43,12 @@ class ClassFinderAdapter implements ClassFinderAdapterInterface {
   /**
    * @var Psr0DirectoryBehavior
    */
-  public $psr0Behavior;
+  protected $psr0Behavior;
 
   /**
-   * var DefaultDirectoryBehavior
+   * @var DefaultDirectoryBehavior
    */
-  public $defaultBehavior;
+  protected $defaultBehavior;
 
   /**
    * @param ExtendedClassFinderInterface $finder
@@ -95,7 +95,7 @@ class ClassFinderAdapter implements ClassFinderAdapterInterface {
   }
 
   /**
-   * @return ClassMapGeneratorInterface
+   * @return \Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface
    */
   function getFinder() {
     return $this->finder;
