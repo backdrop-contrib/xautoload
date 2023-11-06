@@ -1,4 +1,5 @@
 name = X Autoload Test 5
-core = 7.x
+backdrop = 1.x
+type = module
 hidden = 1
 dependencies[] = xautoload
