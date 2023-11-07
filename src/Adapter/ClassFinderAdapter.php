@@ -95,7 +95,7 @@ class ClassFinderAdapter implements ClassFinderAdapterInterface {
   }
 
   /**
-   * @return \Drupal\xautoload\ClassFinder\ExtendedClassFinderInterface
+   * @return \Backdrop\xautoload\ClassFinder\ExtendedClassFinderInterface
    */
   function getFinder() {
     return $this->finder;
